@@ -1,0 +1,132 @@
+/* eslint-disable max-len */
+/* eslint-disable no-plusplus */
+/* eslint-disable prefer-const */
+import React from 'react';
+import { Text, View } from '@react-pdf/renderer';
+import SubLine from '../createLine';
+import { Styles } from '../tableStyles';
+
+// Displaying Docked Summary Table
+function Table1(props) {
+  const { system_summary, serialNum } = props;
+  let { subSerialNum } = props;
+
+  const hearder_val = ['EDI Unit ID']; // Static Header values ----> Kranthi
+  const header_val2 = [];
+  const multiple_steams = [];
+  // pushing all steam numbers in  empty array ----> Kranthi
+  system_summary['EDI Unit ID'].forEach(element => {
+    header_val2.push(element);
+  });
+  // we are spliting steam data into multiple array with consisting of 6 steam in every single array ----> Kranthi
+  while (header_val2.length > 0) {
+    multiple_steams.push(hearder_val.concat(header_val2.splice(0, 5)));
+  }
+  // const C1Width = 195; // 2st Coloum Width ----> Kranthi
+  // const C2Width = 70; // 2nd Coloum Width ----> Kranthi
+  // const C3Width = 70; // 3rd Coloum Width ----> Kranthi
+  //  Static Values of category and parmeters -->Kranthi
+  const key_value = [{ 'key': 'Upstream unit', 'KeyText': 'Upstream unit' }, { 'key': 'Downstream unit', 'KeyText': 'Downstream unit' }, { 'key': 'Feed Flow', 'KeyText': 'Feed Flow' }, { 'key': 'Product Flow', 'KeyText': 'Product Flow' }, { 'key': 'Concentrate Flow', 'KeyText': 'Concentrate Flow' }, { 'key': 'Electrode Bleed Flow', 'KeyText': 'Electrode Bleed Flow' }, { 'key': 'EDI Unit Recovery', 'KeyText': 'EDI Unit Recovery' }, { 'key': 'Flow Per EDI Stack', 'KeyText': 'Flow Per EDI Stack' }, { 'key': 'Number of EDI Stack', 'KeyText': 'No. of E-Cells EDI Stacks' }, { 'key': 'Feed Temperature', 'KeyText': 'Feed Temperature' }, { 'key': 'Feed Pressure', 'KeyText': 'Feed Pressure' }, { 'key': 'Concentrate Pressure', 'KeyText': 'Concentrate Pressure' }, { 'key': 'Product Outlet Pressure', 'KeyText': 'Product Outlet Pressure' }, { 'key': 'Current', 'KeyText': 'Current' }, { 'key': 'Voltage', 'KeyText': 'Voltage' }, { 'key': 'AC Power', 'KeyText': 'AC Power' }, { 'key': 'Co-Current Flow', 'KeyText': 'Co-Current Flow' }, { 'key': 'Feed TDS', 'KeyText': 'Feed TDS' }, { 'key': 'Feed pH', 'KeyText': 'Feed pH' }, { 'key': 'Product Resistivity', 'KeyText': 'Product Resistivity' }, { 'key': 'Product pH', 'KeyText': 'Product pH' }, { 'key': 'Concentrate TDS', 'KeyText': 'Concentrate TDS' }, { 'key': 'Concentrate pH', 'KeyText': 'Concentrate pH' }, { 'key': 'Electrode Bleed TDS', 'KeyText': 'Electrode Bleed TDS' }, { 'key': 'Electrode Bleed pH', 'KeyText': 'Electrode Bleed pH' }];
+  const sub_heading = ['0-0', '0-6', '0-18', '0-20', '0-22']; // where we need sub heading boarder ---> Kranthi
+  const Main_heading = ['0-1', '0-8', '0-12', '0-15', '0-16']; // where we need Main heading boarder ---> Kranthi
+  return (
+    <View>
+      {/* Header of Stripper Summary ---> Kranthi */}
+      <View style={Styles.mainHeader}>
+        <Text style={[Styles.mainHeaderText, { paddingRight: 5 }]}>{serialNum}. EDI Unitop System-Level Summary</Text>
+        {/* I reduced the line width to accommodate the text and added a margin left. --->kranthi */}
+        <SubLine lineWidth='56%' lineHeight='24' style={{marginLeft: 5}}/>
+      </View>
+      {/* sub HEading of Stripper Summary ---> Kranthi */}
+      <View style={[Styles.subHeader, { marginTop: 10 }]}>
+        {/* <SubLine lineWidth='10px' lineHeight='12' /> */}
+        {/* <Text style={{ marginTop: -4, paddingLeft: 15, color: '#0062A9' }}>&#95;&#95;</Text> */}
+        <Text style={{ paddingLeft: 0 }}>{serialNum}.{subSerialNum++}</Text>
+        <Text style={{ paddingLeft: 5 }}>Docked Summary</Text>
+      </View>
+      {
+        // Multiple tables accourding to steam numbers
+        multiple_steams.map((values, ind) => {
+          return (
+            <View key={ind} break={ind > 1} style={[Styles.table, { marginTop: 5, width: '100%' }]}>
+              <View style={Styles.tableRow}>
+                <Text style={Styles.tableCellTextHeader} >Total Number of EDI Unitop = {system_summary['EDI Unit ID'].length}</Text>
+              </View>
+              <View style={Styles.tableRow}>
+                {values.map((val, i) => {
+                  // calculating width for table column and column 1.
+                  const C1Width = `${(100/(values.length))*2}%`;
+                  const Cwidth = `${(100/(values.length))}%`;
+                  // header row
+                  return (
+                    <View key={i} style={[
+                      Styles.tableHeader, { width: Cwidth, borderTopRightRadius: 0 },
+                      (i === 0 && { width: C1Width, paddingLeft: 10, alignItems: 'left' }),
+                      i === values.length - 1 && { borderRightWidth: 0 },
+                    ]}>
+                      <Text style={[Styles.tableCellHeader]}>{val}</Text>
+                    </View>);
+                })}
+              </View>
+              {key_value.map((keys, k_i) => {
+                return (
+                  <View style={Styles.tableRow} key={k_i}>
+                    <View style={[
+                      Styles.tableRCText,
+                      (Main_heading.includes(`0-${k_i}`)) && { borderBottom: 1, borderBottomColor: '#818B8D' },
+                      (sub_heading.includes(`0-${k_i}`)) && { borderBottom: 1, borderBottomColor: '#ACB5BE' },
+                      { paddingLeft: 10, alignItems: 'left'}
+                    ]}>
+                      <Text style={Styles.tableCell}>{keys.KeyText}</Text>
+                    </View>
+                    {/* units of Unitop ID */}
+                    <View style={[
+                      Styles.tableRCText,
+                      (Main_heading.includes(`0-${k_i}`)) && { borderBottom: 1, borderBottomColor: '#818B8D' },
+                      (sub_heading.includes(`0-${k_i}`)) && { borderBottom: 1, borderBottomColor: '#ACB5BE' }
+                    ]}>
+                      <Text style={Styles.tableCell}>{system_summary.units[keys.key]}</Text>
+                    </View>
+                    {values.slice(1).map((val, h_i) => {
+                      // we are looping for multiple columns of Parameter values
+                      return (
+                        <View key={h_i}
+                          style={[
+                            Styles.tableRCText,
+                            (h_i === values.slice(1).length - 1) && { borderRightWidth: 0 },
+                            (Main_heading.includes(`0-${k_i}`)) && { borderBottom: 1, borderBottomColor: '#818B8D' },
+                            (sub_heading.includes(`0-${k_i}`)) && { borderBottom: 1, borderBottomColor: '#ACB5BE' }
+                          ]}>
+                          {(() => {
+                            // checking for Stream Info data
+                            // we do have data in stream_ouput_data for data we getting that in ppm_dict ------> kranthi
+                            // checking for Ion Concentration and data is in  ppm_dict------> kranthi
+                            // checking for Stream Property and data is in  prop_dict------> kranthi
+                            // checking for Saturation Data and data is in  sat_indices------> kranthi
+                            if (keys.key === 'Downstream unit') {
+                              return (
+                                system_summary[val]['Downstream unit'].split(',').map((unitops, index) => {
+                                  return (unitops !== ' ' && <Text key={index} style={Styles.tableCell}>{unitops}</Text>);
+                                })
+                              );
+                            }
+                            if (keys.key === 'Number of EDI Stack') {
+                              return (<Text style={Styles.tableCell}>{system_summary[val][keys.key].toFixed(0)}</Text>);
+                            } if (keys.key === 'Co-Current Flow' || keys.key === 'Upstream unit') {
+                              return (<Text style={Styles.tableCell}>{system_summary[val][keys.key]}</Text>);
+                            }
+                            return (<Text style={Styles.tableCell}>{system_summary[val][keys.key].toFixed(2)}</Text>);
+
+                          })()}
+                        </View>);
+                    })}
+                  </View>);
+              })}
+            </View>
+          );
+        })}
+    </View>
+  );
+}
+
+export default Table1;
