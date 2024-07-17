@@ -27,6 +27,7 @@ const MembraneSeparator = (props) => {
       herder_val.push(d);
     }
   });
+  console.log(herder_val);
   headercount = herder_val.length;
   const splitHeaderData = (ele, parentInd) => {
     return Object.prototype.toString.call(ele) === '[object Array]' ? (

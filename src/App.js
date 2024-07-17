@@ -10,26 +10,27 @@ class App extends Component {
   render() {
     const pdfoption =  [
       { label: 'Flowsheet Design Summary', disabled: true },
-      { label: 'Feed-Product-Waste Summary', disabled: true },
-      { label: 'RO Unitop System-Level Summary', disabled: true },
-      { label: 'RO Unitop Stage-Level Summary', disabled: true },
-      { label: 'CLRO Section Summary', disabled: true },
-      { label: 'EDI Unitop System-Level Summary', disabled: true },
-      { label: 'Chemical Dosing Unitop Summary', disabled: true },
-      { label: 'CF Unitop Summary', disabled: true },
-      { label: 'ERD Unitop Summary (WIP)', disabled: true },
-      { label: 'Pump Unitop Summary', disabled:true },
-      { label: 'Stripper Unitop Summary', disabled:true },
-      { label: 'Mixer-Splitter Unitop Summary', disabled:true },
-      { label: 'Detailed RO Element-Level Data', disabled: true },
-      { label: 'Detailed Stream Data', disabled: true },
+      { label: 'Feed-Product-Waste Summary', disabled: false },
+      { label: 'RO Unitop System-Level Summary', disabled: false },
+      { label: 'RO Unitop Stage-Level Summary', disabled: false },
+      { label: 'Antiscalant Dosage summary', disabled: true },
+      { label: 'CLRO Section Summary', disabled: false },
+      { label: 'EDI Unitop System-Level Summary', disabled: false },
+      { label: 'Chemical Dosing Unitop Summary', disabled: false },
+      { label: 'CF Unitop Summary', disabled: false },
+      { label: 'ERD Unitop Summary (WIP)', disabled: false },
+      { label: 'Pump Unitop Summary', disabled:false },
+      { label: 'Stripper Unitop Summary', disabled:false },
+      { label: 'Mixer-Splitter Unitop Summary', disabled:false },
+      { label: 'Detailed RO Element-Level Data', disabled: false },
+      { label: 'Detailed Stream Data', disabled: false },
       { label: 'Errors & Warnings', disabled: true },
     ];
     return (
-      // <PDFViewer width="100%" height="2100vh" className="app" zoom='269%'>
-      //   <Invoice report_invoice={invoiceData} pdfoption={pdfoption} />
-      // </PDFViewer>
-      <GoogleInvoice report_invoice={invoiceData} pdfoption={pdfoption}/>
+      <PDFViewer width="100%" height="2100vh" className="app" zoom='269%'>
+        <Invoice report_invoice={invoiceData} pdfoption={pdfoption} />
+      </PDFViewer>
+      // <GoogleInvoice report_invoice={invoiceData} pdfoption={pdfoption}/>
       //   <div>
       //   <PDFDownloadLink document={<Invoice invoice={invoiceData} />} fileName="somename.pdf">
       //     {({ blob, url, loading, error }) =>
