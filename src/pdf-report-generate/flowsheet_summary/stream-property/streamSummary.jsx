@@ -104,8 +104,10 @@ const StreamSummary = (props) => {
                       streamStyle.tableCol1, { width: '100%', borderTop: 0, },
                       childInd === 0 && { width: '200%' },
                       childInd > 0 && { borderLeft: 0 },
-                      (index === data.length - 1 && childInd === 0) && { borderBottomLeftRadius: radius },
-                      (index === data.length - 1 && childInd === parameter.length - 1) && { borderBottomRightRadius: radius }
+                      (index === data.length - 1 && childInd === 0) && { borderBottomLeftRadius: radius, borderBottomColor: '#002D62' },
+                      (index === data.length - 1 && childInd === parameter.length - 1) && { borderBottomRightRadius: radius, borderRightColor: '#002D62', borderBottomColor: '#002D62' },
+                      (index === data.length - 1) && { borderBottomColor: '#002D62' },
+                      (childInd === parameter.length - 1) && { borderRightColor: '#002D62' }
                     ]}
                   >
                     <Text style={[streamStyle.tableCell, streamStyle.firstChild, { fontFamily: ArialRegural }]}>
@@ -134,14 +136,14 @@ const StreamSummary = (props) => {
               <View key={ind}
                 style={[
                   streamStyle.tableCol, { width: '100%' },
-                  ind === 0 && [{width: '200%', borderTopLeftRadius: radius }],
+                  ind === 0 && [{ width: '200%', borderTopLeftRadius: radius }],
                   ind > 0 && { borderLeft: 0 },
-                  ind === headerData.length - 1 && { borderTopRightRadius: radius }
+                  ind === headerData.length - 1 && { borderTopRightRadius: radius, borderRightColor: '#002D62' }
                 ]}
               >
                 <Text
                   style={[
-                    streamStyle.tableCell, { fontFamily: ArialB600},
+                    streamStyle.tableCell, { fontFamily: ArialB600 },
                     ind === 0 && streamStyle.firstChild,
                     ind > 0 && streamStyle.restChild,
                   ]}>

@@ -5,13 +5,13 @@ const tabelborderColor = '#B3D3D7';
 export const Styles = StyleSheet.create({
   mainHeader: {
     flexDirection: 'row',
-    color: '#272B30',
+    color: '#002D62',
     fontFamily: ArialB600,
     fontSize: RationValWidth(32),
     fontWeight: 800,
   },
-  mainHeaderText:{
-    width:'auto',
+  mainHeaderText: {
+    width: 'auto',
   },
   subHeader: {
     flexDirection: 'row',
@@ -22,8 +22,8 @@ export const Styles = StyleSheet.create({
   table: {
     display: 'table',
     borderRadius: 6,
-    borderColor: tabelborderColor,
-    borderWidth: 0.5,
+    borderColor: '#002D62',
+    borderWidth: 1,
     margin: '0'
   },
   tableRow: {
@@ -40,7 +40,7 @@ export const Styles = StyleSheet.create({
     borderStyle: 'thin',
     borderColor: tabelborderColor,
     borderRightWidth: 1,
-    backgroundColor: '#0062A9',
+    backgroundColor: '#002D62',
     color: '#ffffff',
     overflow: 'hidden',
     alignItems: 'center',
@@ -74,9 +74,9 @@ export const Styles = StyleSheet.create({
     alignItems: 'center',
     overflow: 'hidden',
     justifyContent: 'center',
-    width:'100%'
+    width: '100%'
   },
-  noReportssubHeader:{
+  noReportssubHeader: {
     fontFamily: ArialRegural,
     fontSize: RationValWidth(16),
   },
@@ -92,5 +92,21 @@ export const Styles = StyleSheet.create({
   tableCellsubHeader: {
     fontFamily: ArialB600,
     fontSize: RationValWidth(18),
-  }
+  },
+  watermark: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+    opacity: 0.1, // Adjust transparency
+    height:670,
+  },
+  watermarkText: {
+    fontSize: 50,
+    color: 'red',
+    transform: 'rotate(-45deg)', // Optional rotation
+  },
 });

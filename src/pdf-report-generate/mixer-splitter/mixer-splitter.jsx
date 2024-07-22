@@ -23,16 +23,17 @@ function MixerSplitter(props) {
   }
   const addUnitsInMixerSplitter = () => {
     const obj = {};
-    Object.keys(mixer_splitter[mixer_splitter['Mixer-Splitter Unit ID'][0]]).map((ele) => {
-      let str = '-';
-      if (ele === 'Split Ratios') {
-        str = '(user input)';
-      } else if (ele === 'Mix Ratios') {
-        str = '(calculated)';
-      }
-      obj[ele] = str;
-      return ele;
-    });
+    if (mixer_splitter.mixer_nos)
+      Object.keys(mixer_splitter[mixer_splitter['Mixer-Splitter Unit ID'][0]]).map((ele) => {
+        let str = '-';
+        if (ele === 'Split Ratios') {
+          str = '(user input)';
+        } else if (ele === 'Mix Ratios') {
+          str = '(calculated)';
+        }
+        obj[ele] = str;
+        return ele;
+      });
     mixer_splitter.units = obj;
   };
   if (!mixer_splitter.units)
@@ -54,7 +55,7 @@ function MixerSplitter(props) {
     <View>
       <View style={Styles.mainHeader}>
         <Text style={[Styles.mainHeaderText, { paddingRight: 5 }]}>{serialNum}. Mixer-Splitter Unitop Summary</Text>
-        <SubLine lineWidth='59%' lineHeight='24' style={{marginLeft: 5}} />
+        <SubLine lineWidth='59%' lineHeight='24' style={{ marginLeft: 5 }} />
       </View>
       {/* I reduced the line width to accommodate the text and added a margin left. --->kranthi */}
       <View style={[Styles.subHeader, { marginTop: 15 }]}>
@@ -67,7 +68,7 @@ function MixerSplitter(props) {
       {multiple_steams.map((values, ind) => {
         return (
           // <View key={ind} break={ind > 1} style={[Styles.table, { marginTop: 10, width: (195 + ((values.length - 1) * 70)), borderWidth: 1, borderColor }]}>
-          <View key={ind} break={ind > 1} style={[Styles.table, { marginTop: 10, width:'100%', borderWidth: 1, borderColor }]}>
+          <View key={ind} break={ind > 1} style={[Styles.table, { marginTop: 10, width: '100%', borderWidth: 1, borderColor: '#002D62' }]}>
             <View style={Styles.tableRow}>
               <Text style={Styles.tableCellTextHeader} >Total Number of Mixer-Splitter = {mixer_splitter.mixer_nos}</Text>
             </View>
@@ -75,12 +76,12 @@ function MixerSplitter(props) {
               {/* header row */}
               {values.map((val, i) => {
                 // calculating width for table column and column 1.
-                const C1Width = `${(100/(values.length))*2}%`;
-                const Cwidth = `${(100/(values.length))}%`;
+                const C1Width = `${(100 / (values.length)) * 2}%`;
+                const Cwidth = `${(100 / (values.length))}%`;
                 return (
                   <View key={i} style={[
-                    Styles.tableHeader, { width:Cwidth, borderTop: 1, borderBottom: 1, borderRight: 1, borderRightColor: borderColor, borderTopColor: borderColor, borderBottomColor: borderColor },
-                    (i === 0 && {width:C1Width, paddingLeft: 10, alignItems: 'left' }),
+                    Styles.tableHeader, { width: Cwidth, borderTop: 1, borderBottom: 1, borderRight: 1, borderRightColor: borderColor, borderTopColor: borderColor, borderBottomColor: borderColor },
+                    (i === 0 && { width: C1Width, paddingLeft: 10, alignItems: 'left' }),
                     i === values.length - 1 && { borderRight: 0 }
                   ]}>
                     <Text style={[Styles.tableCellHeader]}>{val}</Text>

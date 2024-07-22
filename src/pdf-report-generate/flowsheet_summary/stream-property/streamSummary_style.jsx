@@ -1,7 +1,7 @@
 import { StyleSheet } from '@react-pdf/renderer';
 import { RationValWidth, ArialRegural, ArialB600 } from '../../fonts/font';
 
-const borderColor = '#B3D3D7';
+const borderColor = '#002D62';
 export const streamStyle = StyleSheet.create({
   tableRow: {
     flexDirection: 'row',
@@ -20,17 +20,23 @@ export const streamStyle = StyleSheet.create({
     margin: '0',
   },
   tableCol: {
-    backgroundColor: '#0062A9',
+    backgroundColor: '#002D62',
     overflow: 'hidden',
     border: 0.7,
-    borderColor,
+    borderRightColor: '#B3D3D7',
+    borderTopColor: borderColor,
+    borderBottomColor: '#B3D3D7',
+    borderLeftColor: borderColor,
     display: 'flex',
     justifyContent: 'center',
     fontFamily: ArialRegural
   },
   tableCol1: {
     border: 0.7,
-    borderColor,
+    borderRightColor: '#B3D3D7',
+    borderTopColor: borderColor,
+    borderBottomColor: '#B3D3D7',
+    borderLeftColor: borderColor,
     overflow: 'hidden',
   },
   tableCell: {
@@ -49,7 +55,7 @@ export const streamStyle = StyleSheet.create({
   textHeader: {
     flexDirection: 'row',
     fontSize: RationValWidth(20),
-    color: '#272B30',
+    color: '#000000',
     fontFamily: ArialB600,
   },
   subtextHeader: {
@@ -60,7 +66,7 @@ export const streamStyle = StyleSheet.create({
   },
   mainHeader: {
     flexDirection: 'row',
-    color: '#272B30',
+    color: '#000000',
     fontFamily: ArialB600,
   },
   mainHeaderText: {

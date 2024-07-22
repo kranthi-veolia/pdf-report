@@ -8,7 +8,7 @@ export const membraneStyle = StyleSheet.create({
     overflow: 'hidden',
     border: borderW,
     borderRadius: 5,
-    borderColor
+    borderColor:'#002D62'
   },
   tableRow: {
     flexDirection: 'row',
@@ -25,7 +25,7 @@ export const membraneStyle = StyleSheet.create({
   tableCol: {
     borderRight: borderW,
     borderColor,
-    backgroundColor: '#0062A9',
+    backgroundColor: '#002D62',
     overflow: 'hidden',
     justifyContent: 'center'
   },
@@ -62,7 +62,7 @@ export const membraneStyle = StyleSheet.create({
   },
   mainHeader: {
     flexDirection: 'row',
-    color: '#272B30',
+    color: '#002D62',
     fontFamily: ArialB600,
   },
 });

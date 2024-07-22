@@ -141,22 +141,6 @@ const Invoice = (props) => {
           <FooterSection version={invoiceData.project_details} />
         </Page>
       )}
-      {/* Antiscalant Dosage summary */}
-      {(invoiceData && invoiceData.argo_summary) && filterOptions('Antiscalant Dosage summary') && (
-        <Page size='A4' object-fit='fill' style={styles.page} bookmark={`${serialNum}. Antiscalant Dosage summary`}>
-          <HeaderSection version={invoiceData.project_details} />
-          <View style={styles.body} wrap>
-            <AntiscalantDosing
-              argo_summary={invoiceData.argo_summary}
-              pageWidth={1140}
-              tableWidth={1140}
-              serialNum={serialNum++}
-              subSerialNum={subSerialNum}
-            />
-          </View>
-          <FooterSection version={invoiceData.project_details} />
-        </Page>
-      )}
       {/* CLRO section summary */}
       {(invoiceData && invoiceData.clro_elem_summary && invoiceData.clro_elem_summary.clro_nos) && filterOptions('CLRO Section Summary') && (
         <Page size='A4' object-fit='fill' style={styles.page} bookmark={`${serialNum}. CLRO Section Summary`}>
@@ -196,6 +180,22 @@ const Invoice = (props) => {
           <View style={styles.body}>
             <DisplayChemicalDosage
               invoice={invoiceData}
+              serialNum={serialNum++}
+              subSerialNum={subSerialNum}
+            />
+          </View>
+          <FooterSection version={invoiceData.project_details} />
+        </Page>
+      )}
+      {/* Antiscalant Dosage summary */}
+      {(invoiceData && invoiceData.argo_summary) && filterOptions('Antiscalant Dosage summary') && (
+        <Page size='A4' object-fit='fill' style={styles.page} bookmark={`${serialNum}. Antiscalant Dosage summary`}>
+          <HeaderSection version={invoiceData.project_details} />
+          <View style={styles.body} wrap>
+            <AntiscalantDosing
+              argo_summary={invoiceData.argo_summary}
+              pageWidth={1140}
+              tableWidth={1140}
               serialNum={serialNum++}
               subSerialNum={subSerialNum}
             />
@@ -248,7 +248,7 @@ const Invoice = (props) => {
               />
             </View>
           )}
-          {invoiceData.mixer_summary && Object.keys(invoiceData.mixer_summary).length > 0 && filterOptions('Mixer-Splitter Unitop Summary') && (
+          {invoiceData.mixer_summary && invoiceData.mixer_summary.mixer_nos && Object.keys(invoiceData.mixer_summary).length > 0 && filterOptions('Mixer-Splitter Unitop Summary') && (
             <View style={[styles.body]} bookmark={`${serialNum}. Mixer-Splitter Unitop Summary`}
               break={checkConditions(filterOptions('Pump Unitop Summary'), filterOptions('CF Unitop Summary'), filterOptions('ERD Unitop Summary (WIP)'), filterOptions('Stripper Unitop Summary'))}>
               <MixerSplitter

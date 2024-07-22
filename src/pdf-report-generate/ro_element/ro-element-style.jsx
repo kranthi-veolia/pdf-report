@@ -26,7 +26,7 @@ export const roelementstyle = StyleSheet.create({
   tableCol: {
     borderRight: borderW,
     borderColor,
-    backgroundColor: '#0062A9',
+    backgroundColor: '#002D62',
     overflow: 'hidden',
     justifyContent: 'center'
   },
@@ -63,7 +63,7 @@ export const roelementstyle = StyleSheet.create({
   },
   mainHeader: {
     flexDirection: 'row',
-    color: '#272B30',
+    color: '#002D62',
     fontFamily: ArialB600,
     marginBottom: 15
   },

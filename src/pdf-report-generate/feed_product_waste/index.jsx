@@ -129,10 +129,10 @@ function DisplayFeedProductWaste(props) {
         // Multiple tables accourding to steam numbers
         multiple_steams.map((values, ind) => {
           // calculating width for table column and column 1.
-          const C1Width = `${(100/(values.length))*2}%`;
-          const Cwidth = `${(100/(values.length))}%`;
-          const C2width = `${((100/(values.length))*2)+5}%`;
-          const C3width = `${((100/(values.length))*2)-5}%`;
+          const C1Width = `${(100 / (values.length)) * 2}%`;
+          const Cwidth = `${(100 / (values.length))}%`;
+          const C2width = `${((100 / (values.length)) * 2) + 5}%`;
+          const C3width = `${((100 / (values.length)) * 2) - 5}%`;
           return (
             <View key={ind} break={ind > 0} style={[Styles.table, { marginTop: 15, width: '100%' }]}>
               <View style={Styles.tableRow}>
@@ -143,7 +143,7 @@ function DisplayFeedProductWaste(props) {
                       Styles.tableHeader, { width: Cwidth, borderTopRightRadius: 0 },
                       i === 0 && { borderTopLeftRadius: 5 },
                       i === 1 && { paddingLeft: 10, alignItems: 'left', width: C1Width },
-                      i === values.length - 1 && { borderTopRightRadius: 5 },
+                      i === values.length - 1 && { borderTopRightRadius: 5, borderRight: 0 },
                     ]}>
                       <Text style={[Styles.tableCellHeader]}>{val}</Text>
                     </View>
@@ -172,12 +172,12 @@ function DisplayFeedProductWaste(props) {
                                       Styles.tableRCText,
                                       (Main_heading.includes(`${k_i}-${i}`)) && { borderBottom: 1, borderBottomColor: '#818B8D' },
                                       (sub_heading.includes(`${k_i}-${i}`)) && { borderBottom: 1, borderBottomColor: '#ACB5BE' },
-                                      {  alignItems: 'left', width: (C2width), padding: '0  5', overflow:'hidden'}
+                                      { alignItems: 'left', width: (C2width), padding: '0  5', overflow: 'hidden' }
                                     ]}>
-                                      <Text style={[Styles.tableCell, {width:'100%'}]}>{subkey.key}</Text>
+                                      <Text style={[Styles.tableCell, { width: '100%' }]}>{subkey.key}</Text>
                                     </View>
                                     <View style={[
-                                      Styles.tableRCText, {width: (C3width)},
+                                      Styles.tableRCText, { width: (C3width) },
                                       (Main_heading.includes(`${k_i}-${i}`)) && { borderBottom: 1, borderBottomColor: '#818B8D' },
                                       (sub_heading.includes(`${k_i}-${i}`)) && { borderBottom: 1, borderBottomColor: '#ACB5BE' }
                                     ]}>
@@ -195,7 +195,7 @@ function DisplayFeedProductWaste(props) {
                                       // we are looping for multiple columns of Parameter values
                                       return (
                                         <View key={h_i} style={[
-                                          Styles.tableRCText, {width: C1Width},
+                                          Styles.tableRCText, { width: C1Width },
                                           (h_i === values.slice(2).length - 1) && { borderRightWidth: 0 },
                                           (Main_heading.includes(`${k_i}-${i}`)) && { borderBottom: 1, borderBottomColor: '#818B8D' },
                                           (sub_heading.includes(`${k_i}-${i}`)) && { borderBottom: 1, borderBottomColor: '#ACB5BE' }
@@ -207,7 +207,7 @@ function DisplayFeedProductWaste(props) {
                                             // checking for Stream Property and data is in  prop_dict------> kranthi
                                             // checking for Saturation Data and data is in  sat_indices------> kranthi
                                             if (subkey.keyVal === 'Information') {
-                                              return (<Text style={[Styles.tableCell, {padding: '0 60% 0 5%'}]}>{feed_product_waste[val][keys.key]}</Text>);
+                                              return (<Text style={[Styles.tableCell, { padding: '0 60% 0 5%' }]}>{feed_product_waste[val][keys.key]}</Text>);
                                             }
                                             if (subkey.key === 'TDS') {
                                               return (<Text style={Styles.tableCell}>{appendNumberText(feed_product_waste[val][keys.key].tds)}</Text>);

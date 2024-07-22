@@ -145,7 +145,7 @@ const RoElement = (props) => {
                       <SubLine lineWidth='42%' lineHeight='24' style={{ marginLeft: 5 }} />
                     </View>
                   )}
-                  <View key={headerCreateInd} style={[{ border: 1, borderColor, borderRadius: 5 }]} >
+                  <View key={headerCreateInd} style={[{ border: 1, borderColor: '#002D62', borderRadius: 5 }]} >
                     <View id={`header-${index}`} style={[roelementstyle.tableCell, { fontFamily: ArialB600 }]}>
                       <Text style={[roelementstyle.firstEle, { padding: 5 }]}>{element}</Text>
                     </View>

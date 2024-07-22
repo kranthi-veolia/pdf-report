@@ -15,7 +15,7 @@ const EDIFSstyles = StyleSheet.create({
   Box: {
     borderStyle: 'solid',
     borderWidth: 1,
-    borderColor,
+    borderColor: '#002D62',
     borderTopLeftRadius: 5,
     borderTopRightRadius: 5,
     borderBottomLeftRadius: 5,
@@ -30,8 +30,9 @@ const EDIFSstyles = StyleSheet.create({
     fontSize: RationValWidth(25),
     justifyContent: 'center',
     fontFamily: ArialB600,
-    backgroundColor: '#ADEBF3',
-    margin: 1
+    backgroundColor: '#002D62',
+    margin: 1,
+    color:'#ffffff'
   },
   LeftArrow: {
     justifyContent: 'center',
@@ -106,8 +107,8 @@ const EDIFlowschematics = (props) => {
                   <Text style={EDIFSstyles.TextStyle}>Feed Flow = {EDISchematics.feed_flow.toFixed(2)}  {system_summary.units['Feed Flow']}</Text>
                   <Svg width='122.837' height='20.559' viewBox='0 0 262.837 20.559'>
                     <G id='Group_28523' transform='translate(0)'>
-                      <Line x1='0' y1='0' x2='255.615' y2='0' transform='translate(0 10.277)' fill='none' stroke='#07a1b7' strokeWidth='2' />
-                      <Path id='Path_34076' d='M-15326.48,8311.508v17.863l10.281-10.279-10.281-10.279Z' transform='translate(15579.037 -8308.813)' fill='#07a1b7' />
+                      <Line x1='0' y1='0' x2='255.615' y2='0' transform='translate(0 10.277)' fill='none' stroke='#002D62' strokeWidth='2' />
+                      <Path id='Path_34076' d='M-15326.48,8311.508v17.863l10.281-10.279-10.281-10.279Z' transform='translate(15579.037 -8308.813)' fill='#002D62' />
                     </G>
                   </Svg>
                 </View>
@@ -119,8 +120,8 @@ const EDIFlowschematics = (props) => {
                   <Text style={EDIFSstyles.TextStyle}>Product Flow = {EDISchematics.prod_flow.toFixed(2)}  {system_summary.units['Feed Flow']}</Text>
                   <Svg width='122.837' height='20.559' viewBox='0 0 262.837 10.559'>
                     <G id='Group_28523' transform='translate(0)'>
-                      <Line x1='0' y1='0' x2='255.615' y2='0' transform='translate(0 10.277)' fill='none' stroke='#07a1b7' strokeWidth='2' />
-                      <Path id='Path_34076' d='M-15326.48,8311.508v17.863l10.281-10.279-10.281-10.279Z' transform='translate(15579.037 -8308.813)' fill='#07a1b7' />
+                      <Line x1='0' y1='0' x2='255.615' y2='0' transform='translate(0 10.277)' fill='none' stroke='#002D62' strokeWidth='2' />
+                      <Path id='Path_34076' d='M-15326.48,8311.508v17.863l10.281-10.279-10.281-10.279Z' transform='translate(15579.037 -8308.813)' fill='#002D62' />
                     </G>
                   </Svg>
                 </View>
@@ -134,8 +135,8 @@ const EDIFlowschematics = (props) => {
                       <Text style={EDIFSstyles.TextStyle}>Max. Conc. inlet pressure = {EDISchematics.max_conc_inlet_press.toFixed(2)}  {system_summary.units['Feed Pressure']}</Text>
                       <Svg width='122.837' height='20.559' viewBox='0 0 262.837 20.559'>
                         <G id='Group_28523' transform='translate(0)'>
-                          <Line x1='0' y1='0' x2='255.615' y2='0' transform='translate(0 10.277)' fill='none' stroke='#07a1b7' strokeWidth='2' />
-                          <Path id='Path_34076' d='M-15326.48,8311.508v17.863l10.281-10.279-10.281-10.279Z' transform='translate(15579.037 -8308.813)' fill='#07a1b7' />
+                          <Line x1='0' y1='0' x2='255.615' y2='0' transform='translate(0 10.277)' fill='none' stroke='#002D62' strokeWidth='2' />
+                          <Path id='Path_34076' d='M-15326.48,8311.508v17.863l10.281-10.279-10.281-10.279Z' transform='translate(15579.037 -8308.813)' fill='#002D62' />
                         </G>
                       </Svg>
                     </View>
@@ -147,8 +148,8 @@ const EDIFlowschematics = (props) => {
                       <Text style={EDIFSstyles.TextStyle}>Conc. Bleed flow = {EDISchematics.conc_bleed_flow.toFixed(2)}  {system_summary.units['Feed Flow']}</Text>
                       <Svg width='122.837' height='20.559' viewBox='0 0 262.837 20.559'>
                         <G id='Group_28523' transform='translate(0)'>
-                          <Line x1='0' y1='0' x2='255.615' y2='0' transform='translate(0 10.277)' fill='none' stroke='#07a1b7' strokeWidth='2' />
-                          <Path id='Path_34076' d='M-15326.48,8311.508v17.863l10.281-10.279-10.281-10.279Z' transform='translate(15579.037 -8308.813)' fill='#07a1b7' />
+                          <Line x1='0' y1='0' x2='255.615' y2='0' transform='translate(0 10.277)' fill='none' stroke='#002D62' strokeWidth='2' />
+                          <Path id='Path_34076' d='M-15326.48,8311.508v17.863l10.281-10.279-10.281-10.279Z' transform='translate(15579.037 -8308.813)' fill='#002D62' />
                         </G>
                       </Svg>
                     </View>
@@ -159,8 +160,8 @@ const EDIFlowschematics = (props) => {
                       <Text style={EDIFSstyles.TextStyle}>Max. Conc. outlet pressure = {EDISchematics.max_conc_outlet_press.toFixed(2)}  {system_summary.units['Feed Pressure']}</Text>
                       <Text style={EDIFSstyles.TextStyle}>Conc. Bleed flow = {EDISchematics.conc_bleed_flow.toFixed(2)}  {system_summary.units['Feed Flow']}</Text>
                       <Svg width='122.447' height='20.559' viewBox='0 0 262.447 20.559'>
-                        <Line x2='0' y1='0' x1='255.226' y2='0' transform='translate(7.222 10.277)' fill='none' stroke='#07a1b7' strokeWidth='2' />
-                        <Path d='M-15316.2,8311.508v17.863l-10.281-10.279,10.281-10.279Z' transform='translate(15326.48 -8308.813)' fill='#07a1b7' />
+                        <Line x2='0' y1='0' x1='255.226' y2='0' transform='translate(7.222 10.277)' fill='none' stroke='#002D62' strokeWidth='2' />
+                        <Path d='M-15316.2,8311.508v17.863l-10.281-10.279,10.281-10.279Z' transform='translate(15326.48 -8308.813)' fill='#002D62' />
                       </Svg>
                     </View>
                     <View style={[EDIFSstyles.subBox]}>
@@ -169,8 +170,8 @@ const EDIFlowschematics = (props) => {
                     <View style={EDIFSstyles.LeftArrow}>
                       <Text style={EDIFSstyles.TextStyle}>Max. Conc. inlet pressure = {EDISchematics.max_conc_inlet_press.toFixed(2)}  {system_summary.units['Feed Pressure']}</Text>
                       <Svg width='122.447' height='20.559' viewBox='0 0 262.447 20.559'>
-                        <Line x2='0' y1='0' x1='255.226' y2='0' transform='translate(7.222 10.277)' fill='none' stroke='#07a1b7' strokeWidth='2' />
-                        <Path d='M-15316.2,8311.508v17.863l-10.281-10.279,10.281-10.279Z' transform='translate(15326.48 -8308.813)' fill='#07a1b7' />
+                        <Line x2='0' y1='0' x1='255.226' y2='0' transform='translate(7.222 10.277)' fill='none' stroke='#002D62' strokeWidth='2' />
+                        <Path d='M-15316.2,8311.508v17.863l-10.281-10.279,10.281-10.279Z' transform='translate(15326.48 -8308.813)' fill='#002D62' />
                       </Svg>
                     </View>
                   </View>
@@ -187,8 +188,8 @@ const EDIFlowschematics = (props) => {
                   <Text style={EDIFSstyles.TextStyle}>Electrode Bleed flow = {EDISchematics.electrode_bleed_flow.toFixed(2)}  {system_summary.units['Feed Flow']}</Text>
                   <Svg width='122.837' height='20.559' viewBox='0 0 262.837 20.559'>
                     <G id='Group_28523' transform='translate(0)'>
-                      <Line x1='0' y1='0' x2='255.615' y2='0' transform='translate(0 10.277)' fill='none' stroke='#07a1b7' strokeWidth='2' />
-                      <Path id='Path_34076' d='M-15326.48,8311.508v17.863l10.281-10.279-10.281-10.279Z' transform='translate(15579.037 -8308.813)' fill='#07a1b7' />
+                      <Line x1='0' y1='0' x2='255.615' y2='0' transform='translate(0 10.277)' fill='none' stroke='#002D62' strokeWidth='2' />
+                      <Path id='Path_34076' d='M-15326.48,8311.508v17.863l10.281-10.279-10.281-10.279Z' transform='translate(15579.037 -8308.813)' fill='#002D62' />
                     </G>
                   </Svg>
                 </View>

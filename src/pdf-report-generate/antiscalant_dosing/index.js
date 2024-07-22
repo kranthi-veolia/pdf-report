@@ -121,10 +121,10 @@ const AntiscalantDosing = (props) => {
                 </View>
                 <View style={[antiscalantDosingStyle.flexDirection]}>
                   <View style={[antiscalantDosingStyle.tablebodyCol1, {width: RationValWidth((tablewidth / headercount) / 1.33)}]}>
-                    <Text style={[antiscalantDosingStyle.tableCell, { padding: '4 0', marginRight:'30%' }]}>{items[typeData]['Dosage ppm in Feed']}</Text>
+                    <Text style={[antiscalantDosingStyle.tableCell, { padding: '4 0', marginRight:'30%' }]}>{items[typeData]['Dosage ppm in Feed'] === 'N.A'?'N.A' :(items[typeData]['Dosage ppm in Feed']).toFixed(2)}</Text>
                   </View>
                   <View style={[antiscalantDosingStyle.tablebodyCol1, {width: RationValWidth((tablewidth / headercount) / 1.33)}]}>
-                    <Text style={[antiscalantDosingStyle.tableCell, { padding: '4 0', marginRight:'30%' }]}>{items[typeData]['Dosage kgperday in Feed']}</Text>
+                    <Text style={[antiscalantDosingStyle.tableCell, { padding: '4 0', marginRight:'30%' }]}>{items[typeData]['Dosage kgperday in Feed'] === 'N.A'?'N.A':(items[typeData]['Dosage kgperday in Feed']).toFixed(2)}</Text>
                   </View>
                 </View>
               </View>

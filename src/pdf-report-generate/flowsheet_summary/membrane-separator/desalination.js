@@ -27,7 +27,6 @@ const MembraneSeparator = (props) => {
       herder_val.push(d);
     }
   });
-  console.log(herder_val);
   headercount = herder_val.length;
   const splitHeaderData = (ele, parentInd) => {
     return Object.prototype.toString.call(ele) === '[object Array]' ? (
@@ -65,7 +64,8 @@ const MembraneSeparator = (props) => {
               style={[
                 membraneStyle.tableCol,
                 { width: RationValWidth((tablewidth / headercount)) },
-                ind === 0 && { width: RationValWidth(tablewidth / headercount) * rowWidthInc }
+                ind === 0 && { width: RationValWidth(tablewidth / headercount) * rowWidthInc },
+                item.length - 1 === ind && { borderRightWidth: 0 }
               ]}
             >
               {Object.prototype.toString.call(ele) === '[object Object]' ? (
@@ -125,8 +125,8 @@ const MembraneSeparator = (props) => {
                     return (
                       <View key={i}
                         style={[
-                          { borderBottom: 1, borderColor },
-                          i === items.ID[typeData].length - 1 && { borderBottom: 0 }
+                          // { borderBottom: 0, borderColor },
+                          // i === items.ID[typeData].length - 1 && { borderBottom: 0 }
                         ]}>
                         <Text style={membraneStyle.tableCell}>{itemData}</Text>
                       </View>
@@ -141,13 +141,15 @@ const MembraneSeparator = (props) => {
                       style={[
                         membraneStyle.tablebodyCol1,
                         { width: RationValWidth(tablewidth / headercount) },
+                        { borderRightColor: '#B3D3D7' },
+                        headerInd === herder_val.length - 1 && { borderRightWidth: 0 }
                       ]}>
                       {items.ID[typeData].map((v, i) => {
                         return (
                           <View key={i}
                             style={[
-                              { borderBottom: 1, borderColor },
-                              i === items.ID[typeData].length - 1 && { borderBottom: 0 }
+                              // { borderBottom: 0, borderColor },
+                              // i === items.ID[typeData].length - 1 && { borderBottom: 0 }
                             ]}>
                             <Text
                               style={[
