@@ -23,11 +23,11 @@ function DisplayReports(props) {
   return (
     <View>
       {/* Header ---> Kranthi */}
-      <View style={Styles.mainHeader}>
-        <Text style={[Styles.mainHeaderText, { paddingRight: 5 }]}>{serialNum}. Errors & Warnings</Text>
-        {/* I reduced the line width to accommodate the text and added a margin left. --->kranthi */}
-        <SubLine lineWidth='77%' lineHeight='24' style={{marginLeft: 5}} />
-      </View>
+      {/* <View style={Styles.mainHeader}>
+        <Text style={[Styles.mainHeaderText, { paddingRight: 5 }]}>{serialNum}  Notifications</Text> */}
+      {/* I reduced the line width to accommodate the text and added a margin left. --->kranthi */}
+      {/* <SubLine lineWidth='77%' lineHeight='24' style={{marginLeft: 5}} /> */}
+      {/* </View> */}
       {(() => {
         // if no errors and warnings in the data we are not displaying table only text
         if (Errors.length === 0 && Warning.length === 0) {

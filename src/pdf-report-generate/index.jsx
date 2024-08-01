@@ -15,6 +15,7 @@ import DisplayReports from './reports';
 import DisplaySteamData from './steam_data';
 import DisplayFeedProductWaste from './feed_product_waste';
 import ProjectInfo from './project-info/project-info';
+import ProgramDetails from './project-info/program_details';
 import FlowsheetDesign from './flowsheet_summary/flowsheet-design/flowsheet_design';
 import { RationValWidth } from './fonts/font';
 import DisplayROTables from './ro-unit';
@@ -63,10 +64,11 @@ const Invoice = (props) => {
   return (
     <Document>
       {/* ProjectInfo page start */}
-      {(invoiceData && invoiceData.coverpage_dict && invoiceData.coverpage_dict.project_info) && (
+      {(invoiceData && invoiceData.errors && invoiceData.errors.length >= 0) && (
         <Page size='A4' object-fit='fill' style={styles.page} bookmark='Preface'>
           <View style={styles.body}>
             <ProjectInfo
+              errors={invoiceData.errors}
               pageWidth={1140}
               info={invoiceData.coverpage_dict}
               project_details={invoiceData.project_details}
@@ -297,15 +299,19 @@ const Invoice = (props) => {
         </Page>
       )}
       {/* Errors & Warnings Unitop Summary */}
-      {invoiceData && invoiceData.errors && invoiceData.errors.length >= 0 && filterOptions('Errors & Warnings') && (
-        <Page size='A4' object-fit='fill' style={styles.page} bookmark={`${serialNum}. Errors & Warnings`}>
+      {invoiceData && invoiceData.coverpage_dict && invoiceData.coverpage_dict.project_info  && (
+        <Page size='A4' object-fit='fill' style={styles.page} bookmark={`${serialNum}. Winflows 5 Program details`}>
           <HeaderSection version={invoiceData.project_details} />
           <View style={styles.body}>
-            <DisplayReports
+            <ProgramDetails
+              info={invoiceData.coverpage_dict}
+              project_details={invoiceData.project_details}
+              serialNum={serialNum++} subSerialNum={subSerialNum}/>
+            {/* <DisplayReports
               errors={invoiceData.errors}
               serialNum={serialNum++}
               subSerialNum={subSerialNum}
-            />
+            /> */}
           </View>
           <FooterSection version={invoiceData.project_details} />
         </Page>
