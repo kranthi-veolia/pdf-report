@@ -26,7 +26,7 @@ export const antiscalantDosingStyle = StyleSheet.create({
   tableCol: {
     borderRight: borderW,
     borderColor,
-    backgroundColor: '#0062A9',
+    backgroundColor: '#002D62',
     overflow: 'hidden',
     display: 'flex',
     justifyContent: 'center',

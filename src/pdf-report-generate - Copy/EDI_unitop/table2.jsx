@@ -195,8 +195,8 @@ function Table2(props) {
                                       (sub_heading.includes(`${k_i}-${i}`)) && { borderBottom: 1, borderBottomColor: '#ACB5BE' }
                                     ]}>
                                     {(() => {
-                                      // checking for No. of E-Cells EDI Stacks
-                                      //   if(subKey.keyVal === 'No. of E-Cells EDI Stacks'){
+                                      // checking for No. of E-Cell EDI Stacks
+                                      //   if(subKey.keyVal === 'No. of E-Cell EDI Stacks'){
                                       //     return (<Text style={Styles.tableCell}>{system_summary[val][subKey.key].toFixed(0)}</Text>);
                                       //   }
                                       return (

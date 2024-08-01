@@ -33,22 +33,7 @@ const styles = StyleSheet.create({
   body: {
     marginHorizontal: RationValWidth(56),
     // paddingTop: RationValWidth(24),
-  },
-  watermark: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
-    opacity: 0.2, // Adjust transparency
-  },
-  watermarkText: {
-    fontSize: 50,
-    color: 'red',
-    transform: 'rotate(-45deg)', // Optional rotation
-  },
+  }
 });
 // in this function we are showing all unitop summary into multiple pages --> kranthi
 const Invoice = (props) => {
@@ -93,7 +78,7 @@ const Invoice = (props) => {
       {invoiceData && invoiceData.flowsheet_config_dict && Object.keys(invoiceData.flowsheet_config_dict).length > 0 && filterOptions('Flowsheet Design Summary') && (
         <Page size='A4' object-fit='fill' style={styles.page} bookmark={`${serialNum}. Flowsheet Design Summary`} >
           <HeaderSection version={invoiceData.project_details} fixed />
-          <View style={[styles.body]}>
+          <View style={styles.body}>
             <FlowsheetDesign
               pageWidth={1140}
               tableWidth={1140}
@@ -156,22 +141,6 @@ const Invoice = (props) => {
           <FooterSection version={invoiceData.project_details} />
         </Page>
       )}
-      {/* Antiscalant Dosage summary */}
-      {(invoiceData && invoiceData.argo_summary) && filterOptions('Antiscalant Dosage summary') && (
-        <Page size='A4' object-fit='fill' style={styles.page} bookmark={`${serialNum}. Antiscalant Dosage summary`}>
-          <HeaderSection version={invoiceData.project_details} />
-          <View style={styles.body} wrap>
-            <AntiscalantDosing
-              argo_summary={invoiceData.argo_summary}
-              pageWidth={1140}
-              tableWidth={1140}
-              serialNum={serialNum++}
-              subSerialNum={subSerialNum}
-            />
-          </View>
-          <FooterSection version={invoiceData.project_details} />
-        </Page>
-      )}
       {/* CLRO section summary */}
       {(invoiceData && invoiceData.clro_elem_summary && invoiceData.clro_elem_summary.clro_nos) && filterOptions('CLRO Section Summary') && (
         <Page size='A4' object-fit='fill' style={styles.page} bookmark={`${serialNum}. CLRO Section Summary`}>
@@ -211,6 +180,22 @@ const Invoice = (props) => {
           <View style={styles.body}>
             <DisplayChemicalDosage
               invoice={invoiceData}
+              serialNum={serialNum++}
+              subSerialNum={subSerialNum}
+            />
+          </View>
+          <FooterSection version={invoiceData.project_details} />
+        </Page>
+      )}
+      {/* Antiscalant Dosage summary */}
+      {(invoiceData && invoiceData.argo_summary) && filterOptions('Antiscalant Dosage summary') && (
+        <Page size='A4' object-fit='fill' style={styles.page} bookmark={`${serialNum}. Antiscalant Dosage summary`}>
+          <HeaderSection version={invoiceData.project_details} />
+          <View style={styles.body} wrap>
+            <AntiscalantDosing
+              argo_summary={invoiceData.argo_summary}
+              pageWidth={1140}
+              tableWidth={1140}
               serialNum={serialNum++}
               subSerialNum={subSerialNum}
             />
@@ -263,7 +248,7 @@ const Invoice = (props) => {
               />
             </View>
           )}
-          {invoiceData.mixer_summary && Object.keys(invoiceData.mixer_summary).length > 0 && filterOptions('Mixer-Splitter Unitop Summary') && (
+          {invoiceData.mixer_summary && invoiceData.mixer_summary.mixer_nos && Object.keys(invoiceData.mixer_summary).length > 0 && filterOptions('Mixer-Splitter Unitop Summary') && (
             <View style={[styles.body]} bookmark={`${serialNum}. Mixer-Splitter Unitop Summary`}
               break={checkConditions(filterOptions('Pump Unitop Summary'), filterOptions('CF Unitop Summary'), filterOptions('ERD Unitop Summary (WIP)'), filterOptions('Stripper Unitop Summary'))}>
               <MixerSplitter

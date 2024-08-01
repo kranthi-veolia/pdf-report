@@ -1,7 +1,7 @@
 import { StyleSheet } from '@react-pdf/renderer';
 import { ArialRegural, ArialB600, RationValWidth } from '../../fonts/font';
 
-const borderColor = '#B3D3D7';
+const borderColor = '#002D62';
 const borderW = 0.8;
 export const membraneStyle = StyleSheet.create({
   mainTable: {
@@ -25,8 +25,8 @@ export const membraneStyle = StyleSheet.create({
   },
   tableCol: {
     borderRight: borderW,
-    borderColor,
-    backgroundColor: '#0062A9',
+    borderColor: '#B3D3D7',
+    backgroundColor: '#002D62',
     overflow: 'hidden',
     display: 'flex',
     justifyContent: 'center',
@@ -50,7 +50,7 @@ export const membraneStyle = StyleSheet.create({
   textHeader: {
     flexDirection: 'row',
     fontSize: RationValWidth(20),
-    color: '#272B30',
+    color: '#000000',
     fontFamily: ArialB600,
     marginBottom: RationValWidth(15),
   },
@@ -59,7 +59,7 @@ export const membraneStyle = StyleSheet.create({
     border: borderW,
     borderLeft: 0,
     borderBottom: 0,
-    borderColor,
+    borderColor: '#B3D3D7',
   },
   tablebodyCol1: {
     textAlign: 'center',
@@ -67,6 +67,6 @@ export const membraneStyle = StyleSheet.create({
     justifyContent: 'center',
     width: '50%',
     borderRight: 1,
-    borderColor,
+    borderColor: '#B3D3D7'
   }
 });

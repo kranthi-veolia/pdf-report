@@ -90,7 +90,7 @@ const FooterSection = (props) => {
           Page
         </Text>
         <View
-          style={{ left: RationValWidth(38), width: RationValWidth(32), height: RationValWidth(32), backgroundColor: '#0062A9', borderRadius: '50%', position: 'absolute' }}
+          style={{ left: RationValWidth(38), width: RationValWidth(32), height: RationValWidth(32), backgroundColor: '#002D62', borderRadius: '50%', position: 'absolute' }}
         >
           <Text
             style={{ color: 'white', fontFamily: ArialB600, fontSize: '8px', top: '1px', margin: 'auto' }}

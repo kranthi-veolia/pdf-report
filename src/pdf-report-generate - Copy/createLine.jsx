@@ -1,6 +1,6 @@
 import { Canvas } from '@react-pdf/renderer';
 
-const SubLine = ({ lineWidth, lineHeight, color = '#0062A9', width = 1, style }) => (
+const SubLine = ({ lineWidth, lineHeight, color = '#002D62', width = 1, style }) => (
   <Canvas
     style={{ width: lineWidth, height: lineHeight, ...style }}
     paint={(painter, maxWidth, height) => {

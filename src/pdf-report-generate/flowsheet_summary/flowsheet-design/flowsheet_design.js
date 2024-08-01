@@ -9,7 +9,6 @@ import SubLine from '../../createLine';
 import { RationValWidth, ArialB600 } from '../../fonts/font';
 import { styleflowsheet } from './flowsheet_design_style';
 import DisplayTable from '../../displayTable';
-import { Styles } from '../../tableStyles';
 
 const FlowsheetDesign = (props) => {
   const borderColor = '#002D62';

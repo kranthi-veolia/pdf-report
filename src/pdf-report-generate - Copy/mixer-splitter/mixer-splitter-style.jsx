@@ -26,7 +26,7 @@ export const membraneStyle = StyleSheet.create({
   tableCol: {
     borderRight: borderW,
     borderColor,
-    backgroundColor: '#0062A9',
+    backgroundColor: '#002D62',
     overflow: 'hidden',
     justifyContent:'center'
   },

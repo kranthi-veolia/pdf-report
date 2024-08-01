@@ -139,7 +139,7 @@ function DisplayPump(props) {
                 );
               })}
               <View style={[Styles.tableRow, { borderTopWidth: 0.5, borderColor: '#B3D3D7' }]}>
-                {/* <Text style={Styles.tableCellTextHeader} >Total Power Consumption (kW) = {pumps['Total Power Consumption (kW)'].toFixed(2)}</Text> */}
+                <Text style={Styles.tableCellTextHeader} >Total Power Consumption (kW) = {pumps['Total Power Consumption (kW)'].toFixed(2)}</Text>
               </View>
             </View>
           );

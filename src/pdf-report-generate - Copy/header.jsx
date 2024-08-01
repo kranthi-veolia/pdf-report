@@ -2,6 +2,7 @@
 /* eslint-disable max-len */
 import { StyleSheet, Text, View } from '@react-pdf/renderer';
 import RationValWidth, { ArialRegural, ArialB600 } from './fonts/font';
+import { Styles } from './tableStyles';
 
 const borderColor = '#B3D3D7';
 let tablewidth = 1140;
@@ -27,7 +28,7 @@ const roelementstyle = StyleSheet.create({
   tableCol: {
     borderRight: borderW,
     borderColor,
-    backgroundColor: '#0062A9',
+    backgroundColor: '#002D62',
     overflow: 'hidden',
     justifyContent: 'center'
   },
@@ -126,7 +127,7 @@ const TableHeader = (props) => {
     );
   };
   return (
-    <View>
+    <View debug>
       {createHeader(headerval)}
     </View>
   );

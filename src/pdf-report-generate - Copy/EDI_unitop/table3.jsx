@@ -63,7 +63,7 @@ function Table3(props) {
       subKey: [
         { key: 'Stack Model', keyVal: 'Stack Model' },
         { key: 'Target Resistivity', keyVal: 'Target Resistivity' },
-        { key: 'Product Flow', keyVal: 'Product Flow' },
+        { key: 'Product Flow', keyVal: 'System Product Flow' },
         // { key: 'Flow per stack', keyVal: 'Flow per stack' },
         { key: 'Target Silica guarantee', keyVal: 'Target Silica guarantee' },
         { key: 'Rectifier efficiency', keyVal: 'Rectifier efficiency' },
@@ -121,7 +121,7 @@ function Table3(props) {
           keyVal: 'Maximum Allowable Recovery',
           decimalVal: 1
         },
-        { key: 'Number of E-Cell EDI Stack', keyVal: 'No. of E-Cells EDI Stacks' },
+        { key: 'Number of E-Cell EDI Stack', keyVal: 'No. of E-Cell EDI Stacks' },
         { key: 'Current', keyVal: 'Current', decimalVal: 1 },
         { key: 'Voltage', keyVal: 'Voltage', decimalVal: 1 },
         { key: 'E-Factor', keyVal: 'E-Factor' },
@@ -216,8 +216,8 @@ function Table3(props) {
                                           (sub_heading.includes(`${k_i}-${i}`)) && { borderBottom: 1, borderBottomColor: '#ACB5BE' }
                                         ]}>
                                         {(() => {
-                                          // checking for No. of E-Cells EDI Stacks
-                                          if (subKey.keyVal === 'No. of E-Cells EDI Stacks') {
+                                          // checking for No. of E-Cell EDI Stacks
+                                          if (subKey.keyVal === 'No. of E-Cell EDI Stacks') {
                                             return (<Text style={Styles.tableCell}>{system_summary[val][subKey.key].toFixed(0)}</Text>);
                                           }
                                           return (<Text

@@ -137,10 +137,10 @@ const FSDBalance = (props) => {
     const obj = ['Unit ID (Stream no.)', 'Flow', 'Flow - Total', 'Overall Flow Sheet Recovery'];
     const data = Object.keys(items);
     return (
-      <View style={{ width: RationValWidth(tablewidth), margin: 0 }}>
+      <View style={[{ width: RationValWidth(tablewidth) }, fsdStyle.contentBoreder]}>
         {data.map((item, parentInd) => (
           <View key={parentInd}
-            style={[fsdStyle.tableRow1, parentInd === data.length - 1 && { borderBottomLeftRadius: 5, borderBottomRightRadius: 5 }]}
+            style={[fsdStyle.tableRow1]}
           >
             {getTableValue(item, items[item], obj[parentInd])}
           </View>

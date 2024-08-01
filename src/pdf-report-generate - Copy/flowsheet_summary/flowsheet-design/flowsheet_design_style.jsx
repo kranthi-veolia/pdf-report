@@ -1,7 +1,7 @@
 import { StyleSheet } from '@react-pdf/renderer';
 import { RationValWidth, ArialRegural, ArialB600 } from '../../fonts/font';
 
-const borderColor = '#B3D3D7';
+const borderColor = '#002D62';
 const border = 1;
 
 export const styleflowsheet = StyleSheet.create({
@@ -17,13 +17,13 @@ export const styleflowsheet = StyleSheet.create({
   textHeader: {
     flexDirection: 'row',
     fontSize: RationValWidth(20),
-    color: '#272B30',
+    color: '#000000',
     fontFamily: ArialB600,
     marginBottom: RationValWidth(25),
   },
   mainHeader: {
     flexDirection: 'row',
-    color: '#272B30',
+    color: '#002D62',
     fontFamily: ArialB600,
   },
   textprop: {

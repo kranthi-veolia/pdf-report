@@ -121,10 +121,10 @@ const AntiscalantDosing = (props) => {
                 </View>
                 <View style={[antiscalantDosingStyle.flexDirection]}>
                   <View style={[antiscalantDosingStyle.tablebodyCol1, {width: RationValWidth((tablewidth / headercount) / 1.33)}]}>
-                    <Text style={[antiscalantDosingStyle.tableCell, { padding: '4 0', marginRight:'30%' }]}>{items[typeData]['Dosage ppm in Feed']}</Text>
+                    <Text style={[antiscalantDosingStyle.tableCell, { padding: '4 0', marginRight:'30%' }]}>{items[typeData]['Dosage ppm in Feed'] === 'N.A'?'N.A' :(items[typeData]['Dosage ppm in Feed']).toFixed(2)}</Text>
                   </View>
                   <View style={[antiscalantDosingStyle.tablebodyCol1, {width: RationValWidth((tablewidth / headercount) / 1.33)}]}>
-                    <Text style={[antiscalantDosingStyle.tableCell, { padding: '4 0', marginRight:'30%' }]}>{items[typeData]['Dosage kgperday in Feed']}</Text>
+                    <Text style={[antiscalantDosingStyle.tableCell, { padding: '4 0', marginRight:'30%' }]}>{items[typeData]['Dosage kgperday in Feed'] === 'N.A'?'N.A':(items[typeData]['Dosage kgperday in Feed']).toFixed(2)}</Text>
                   </View>
                 </View>
               </View>
@@ -141,9 +141,6 @@ const AntiscalantDosing = (props) => {
         <Text style={[Styles.mainHeaderText, { paddingRight: 5 }]} >{serialNum}. Antiscalant Dosage summary</Text>
         {/* I reduced the line width to accommodate the text and added a margin left. --->kranthi */}
         <SubLine lineWidth='60%' lineHeight='24' />
-      </View>
-      <View style={Styles.watermark} wrap>
-        <Text style={Styles.watermarkText}>Not for official use</Text>
       </View>
       <View style={[antiscalantDosingStyle.mainTable, { width: RationValWidth(tablewidth) }]}>
         {createHeader(herder_val)}
