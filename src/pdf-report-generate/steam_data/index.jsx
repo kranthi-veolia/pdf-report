@@ -90,6 +90,7 @@ function DisplaySteamData(props) {
     {
       key: 'Stream Property',
       subKey: [
+        { key: 'Steam Name', keyVal: 'source', unit: '' },
         { key: 'Flow', keyVal: 'flow', unit: getUnitValue('Flow') },
         { key: 'Pressure', keyVal: 'press', unit: getUnitValue('Pressure') },
         { key: 'Temperature', keyVal: 'temp', unit: unit_set_dict.Temperature },
@@ -205,7 +206,7 @@ function DisplaySteamData(props) {
                                             // checking for Ion Concentration and data is in  ppm_dict------> kranthi
                                             // checking for Stream Property and data is in  prop_dict------> kranthi
                                             // checking for Saturation Data and data is in  sat_indices------> kranthi
-                                            if (keys.key === 'Stream Info') {
+                                            if (keys.key === 'Stream Info' || subkey.keyVal === 'source') {
                                               return (
                                                 <Text style={Styles.tableCell}>{stream_input_dict[val][subkey.keyVal]}</Text>
                                               );
