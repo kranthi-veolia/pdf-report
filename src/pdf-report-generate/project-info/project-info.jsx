@@ -175,10 +175,10 @@ const ProjectInfo = (props) => {
           </View>
         </View>
 
-        <View style={{ position: 'absolute', bottom: '0px', width: RationValWidth(1140) }}>
+        <View style={{ position: 'absolute', bottom:'0px', width: RationValWidth(1140) }}>
           <SubLine lineWidth='100%' lineHeight='24' color='#B3D3D7' />
           {/* Winflows 5 Program details and Report Details Start */}
-          <View style={{ marginLeft: RationValWidth(32) }}>
+          <View style={{ marginLeft: RationValWidth(32), paddingRight: '10px', paddingBottom:'10px'}}>
             {tableHeader('Notifications')}
             <DisplayReports errors={errors} />
             {/* <ProgramDetails info={info} project_info={project_info} project_details={project_details}/> */}

@@ -5,6 +5,55 @@ import { Text, View, Svg, Path } from '@react-pdf/renderer';
 // import { Styles } from './steamDataStyles';
 import SubLine from '../createLine';
 import { Styles } from '../tableStyles';
+
+// Helper function to chunk a string into specified lengths
+function chunkString(str, length) {
+  const result = [];
+  let index = 0;
+  while (index < str.length) {
+    result.push(str.substring(index, Math.min(index + length, str.length)));
+    index += length;
+  }
+  return result;
+}
+const CustomTextComponent = ({ data }) => {
+  // Function to split text into chunks of a specific max length
+  const splitText = (text, maxLength) => {
+    const result = [];
+    while (text.length > maxLength) {
+      const part = `${text.substring(0, maxLength)  }-`;
+      result.push(part);
+      text = text.substring(maxLength);
+    }
+    // Add the last part without a dash if there's any text left
+    if (text.length) {
+      result.push(text);
+    }
+    return result;
+  };
+
+  // Split the data by ']', then map over each segment
+  const segments = data.split(']').map((segment, i) => {
+    // Check if segment is not empty
+    if (segment) {
+      // Add the closing bracket back to the part before the comma
+      const partWithBracket = i === 0 ? `${segment}]` : segment;
+      // Split the part after the bracket by the comma to separate the description
+      const [part] = partWithBracket.split(',');
+      // Split long text into multiple lines if it's longer than 10 characters
+      return splitText(part.trim(), 15);
+    }
+    return [];
+  }).flat();
+
+  return (
+    <View style={[Styles.tableCell, {padding: '5 0'}]}>
+      {segments.map((line, index) => (
+        <Text key={index}>{line}</Text>
+      ))}
+    </View>
+  );
+};
 // displaying Steam Data tabke in Report ----> Kranthi
 function DisplaySteamData(props) {
   const { stream_ouput_data, stream_input_dict, unit_set_dict, serialNum, ediOutputData } = props;
@@ -17,7 +66,7 @@ function DisplaySteamData(props) {
   });
   // we are spliting steam data into multiple array with consisting of 6 steam in every single array ----> Kranthi
   while (header_val2.length > 0) {
-    multiple_steams.push(hearder_val.concat(header_val2.splice(0, 6)));
+    multiple_steams.push(hearder_val.concat(header_val2.splice(0, 5)));
   }
   // checking for units in stream Property category----> Kranthi
   const getUnitValue = (item) => {
@@ -54,10 +103,10 @@ function DisplaySteamData(props) {
   //  Static Values of category and parmeters -->Kranthi
   const key_value = [
     {
-      key: 'Stream Info',
+      key: 'Stream Name',
       subKey: [
-        { key: 'Source Unitop', keyVal: 'source', unit: '' },
-        { key: 'Destination Unitop', keyVal: 'destination', unit: '' },
+        { key: ' ', keyVal: 'label', unit: '' },
+        // { key: 'Destination Unitop', keyVal: 'destination', unit: '' },
       ],
     },
     {
@@ -90,7 +139,7 @@ function DisplaySteamData(props) {
     {
       key: 'Stream Property',
       subKey: [
-        { key: 'Steam Name', keyVal: 'source', unit: '' },
+        // { key: 'Steam Name', keyVal: 'source', unit: '' },
         { key: 'Flow', keyVal: 'flow', unit: getUnitValue('Flow') },
         { key: 'Pressure', keyVal: 'press', unit: getUnitValue('Pressure') },
         { key: 'Temperature', keyVal: 'temp', unit: unit_set_dict.Temperature },
@@ -120,6 +169,7 @@ function DisplaySteamData(props) {
 
   const sub_heading = ['1-8', '1-17', '1-20', '2-2', '2-7']; // where we need sub heading boarder by kranthi
   const Main_heading = []; // where we need Main heading boarder by kranthi
+
   return (
     <View>
       {/* Header of the page */}
@@ -160,115 +210,112 @@ function DisplaySteamData(props) {
                 </View>
                 {key_value.map((keys, k_i) => {
                   return (
-                    <View style={Styles.tableRow} key={k_i}>
-                      <View style={[Styles.tableColumn, (k_i === key_value.length - 1) ? {
-                        borderBottom: 0, borderBottomColor: '#818B8D'
-                      } : { borderBottom: 1, borderBottomColor: '#818B8D' }]}>
-                        <View style={Styles.tableRow}>
-                          {/* grouping category for Steam Data */}
-                          <View style={[Styles.tableRCText, { width: '150%', height: 'auto' }]}>
-                            <Text style={[Styles.tableCell, { margin: 'auto 0', textAlign: 'center', }]}>{keys.key}</Text>
-                          </View>
-                          <View>
-                            <View style={Styles.tableColumn}>
-                              {keys.subKey.map((subkey, i) => {
-                                // looping key value of static data
-                                return (
-                                  <View style={Styles.tableRow} key={i}>
-                                    <View style={[
+                    <View style={[Styles.tableRow, (k_i === key_value.length - 1) ? {
+                      borderBottom: 0, borderBottomColor: '#818B8D'
+                    } : { borderBottom: 1, borderBottomColor: '#818B8D' }]}>
+                      {/* grouping category for Steam Data */}
+                      <View style={[Styles.tableRCText, { width: '150%', height: 'auto' }]}>
+                        <Text style={[Styles.tableCell, { margin: 'auto 0', textAlign: 'center', }]}>{keys.key}</Text>
+                      </View>
+                      <View>
+                        <View style={Styles.tableColumn}>
+                          {keys.subKey.map((subkey, i) => {
+                            // looping key value of static data
+                            return (
+                              <View style={Styles.tableRow} key={i}>
+                                <View style={[
+                                  Styles.tableRCText,
+                                  (Main_heading.includes(`${k_i}-${i}`)) && { borderBottom: 1, borderBottomColor: '#818B8D' },
+                                  (sub_heading.includes(`${k_i}-${i}`)) && { borderBottom: 1, borderBottomColor: '#ACB5BE' },
+                                  { paddingLeft: 10, alignItems: 'left', width: '150%', }
+                                ]}>
+                                  <Text style={Styles.tableCell}>{keys.key === 'Ion Concentration' ? subkey.keyVal : subkey.key}</Text>
+                                </View>
+                                <View style={[
+                                  Styles.tableRCText,
+                                  (Main_heading.includes(`${k_i}-${i}`)) && { borderBottom: 1, borderBottomColor: '#818B8D' },
+                                  (sub_heading.includes(`${k_i}-${i}`)) && { borderBottom: 1, borderBottomColor: '#ACB5BE' },
+                                  {}
+                                ]}>
+                                  <Text style={Styles.tableCell}>{subkey.unit}</Text>
+                                </View>
+                                {values.slice(3).map((val, h_i) => {
+                                  // we are looping for multiple columns of Parameter values
+                                  return (
+                                    <View key={h_i} style={[
                                       Styles.tableRCText,
+                                      (h_i === values.slice(2).length - 1) && { borderRightWidth: 0 },
                                       (Main_heading.includes(`${k_i}-${i}`)) && { borderBottom: 1, borderBottomColor: '#818B8D' },
-                                      (sub_heading.includes(`${k_i}-${i}`)) && { borderBottom: 1, borderBottomColor: '#ACB5BE' },
-                                      { paddingLeft: 10, alignItems: 'left', width: '150%', }
+                                      (sub_heading.includes(`${k_i}-${i}`)) && { borderBottom: 1, borderBottomColor: '#ACB5BE' }, {}
                                     ]}>
-                                      <Text style={Styles.tableCell}>{keys.key === 'Ion Concentration' ? subkey.keyVal : subkey.key}</Text>
-                                    </View>
-                                    <View style={[
-                                      Styles.tableRCText,
-                                      (Main_heading.includes(`${k_i}-${i}`)) && { borderBottom: 1, borderBottomColor: '#818B8D' },
-                                      (sub_heading.includes(`${k_i}-${i}`)) && { borderBottom: 1, borderBottomColor: '#ACB5BE' },
-                                      {}
-                                    ]}>
-                                      <Text style={Styles.tableCell}>{subkey.unit}</Text>
-                                    </View>
-                                    {values.slice(3).map((val, h_i) => {
-                                      // we are looping for multiple columns of Parameter values
-                                      return (
-                                        <View key={h_i} style={[
-                                          Styles.tableRCText,
-                                          (h_i === values.slice(2).length - 1) && { borderRightWidth: 0 },
-                                          (Main_heading.includes(`${k_i}-${i}`)) && { borderBottom: 1, borderBottomColor: '#818B8D' },
-                                          (sub_heading.includes(`${k_i}-${i}`)) && { borderBottom: 1, borderBottomColor: '#ACB5BE' }, {}
-                                        ]}>
-                                          {(() => {
-                                            // checking for Stream Info data
-                                            // we do have data in stream_ouput_data for data we getting that in ppm_dict ------> kranthi
-                                            // checking for Ion Concentration and data is in  ppm_dict------> kranthi
-                                            // checking for Stream Property and data is in  prop_dict------> kranthi
-                                            // checking for Saturation Data and data is in  sat_indices------> kranthi
-                                            if (keys.key === 'Stream Info' || subkey.keyVal === 'source') {
+                                      {(() => {
+                                        // checking for Stream Info data
+                                        // we do have data in stream_ouput_data for data we getting that in ppm_dict ------> kranthi
+                                        // checking for Ion Concentration and data is in  ppm_dict------> kranthi
+                                        // checking for Stream Property and data is in  prop_dict------> kranthi
+                                        // checking for Saturation Data and data is in  sat_indices------> kranthi
+                                        if (keys.key === 'Stream Name') {
+                                          return (
+                                            <CustomTextComponent data={stream_ouput_data[val][subkey.keyVal]} />
+                                            // <Text style={[Styles.tableCell, {Padding: '5 0'}]}>{stream_ouput_data[val][subkey.keyVal]}</Text>
+                                          );
+                                        }
+                                        if (keys.key === 'Ion Concentration') {
+                                          const flag = ediOutputData.filter((edio) => {
+                                            return stream_ouput_data[val].label.toLowerCase().indexOf(edio.target) > 0;
+                                          });
+                                          if (subkey.keyVal === 'TDS') {
+                                            if (flag.length > 0) {
                                               return (
-                                                <Text style={Styles.tableCell}>{stream_input_dict[val][subkey.keyVal]}</Text>
-                                              );
-                                            }
-                                            if (keys.key === 'Ion Concentration') {
-                                              const flag = ediOutputData.filter((edio) => {
-                                                return stream_ouput_data[val].label.toLowerCase().indexOf(edio.target) > 0;
-                                              });
-                                              if (subkey.keyVal === 'TDS') {
-                                                if (flag.length > 0) {
-                                                  return (
-                                                    <Text style={Styles.tableCell}>{appendNumberText(stream_ouput_data[val].prop_dict.tds, 5)}</Text>
-                                                  );
-                                                }
-                                                return (
-                                                  <Text style={Styles.tableCell}>{appendNumberText(stream_ouput_data[val].prop_dict.tds, 3)}</Text>
-                                                );
-                                              }
-                                              if (flag.length > 0) {
-                                                return (
-                                                  <Text style={Styles.tableCell}>{appendNumberText(stream_ouput_data[val].ppm_dict[subkey.keyVal], 5)}</Text>
-                                                );
-                                              }
-                                              return (
-                                                <Text style={Styles.tableCell}>{appendNumberText(stream_ouput_data[val].ppm_dict[subkey.keyVal], 3)}</Text>
-                                              );
-                                            }
-                                            if (keys.key === 'Stream Property') {
-                                              const flag = ediOutputData.filter((edio) => {
-                                                return stream_ouput_data[val].label.toLowerCase().indexOf(edio.target) > 0;
-                                              });
-                                              if (subkey.keyVal === 'conductivity') {
-                                                if (flag.length > 0) {
-                                                  return (
-                                                    <Text style={Styles.tableCell}>{appendNumberText(stream_ouput_data[val].sat_indices[subkey.keyVal], 4)}</Text>
-                                                  );
-                                                }
-                                                return (
-                                                  <Text style={Styles.tableCell}>{appendNumberText(stream_ouput_data[val].sat_indices[subkey.keyVal], 1)}</Text>
-                                                );
-                                              }
-                                              if (subkey.keyVal === 'osmotic_pressure') {
-                                                return (
-                                                  <Text style={Styles.tableCell}>{appendNumberText(stream_ouput_data[val].sat_indices[subkey.keyVal])}</Text>
-                                                );
-                                              }
-                                              return (
-                                                <Text style={Styles.tableCell}>{appendNumberText(stream_ouput_data[val].prop_dict[subkey.keyVal])}</Text>
+                                                <Text style={Styles.tableCell}>{appendNumberText(stream_ouput_data[val].prop_dict.tds, 5)}</Text>
                                               );
                                             }
                                             return (
+                                              <Text style={Styles.tableCell}>{appendNumberText(stream_ouput_data[val].prop_dict.tds, 3)}</Text>
+                                            );
+                                          }
+                                          if (flag.length > 0) {
+                                            return (
+                                              <Text style={Styles.tableCell}>{appendNumberText(stream_ouput_data[val].ppm_dict[subkey.keyVal], 5)}</Text>
+                                            );
+                                          }
+                                          return (
+                                            <Text style={Styles.tableCell}>{appendNumberText(stream_ouput_data[val].ppm_dict[subkey.keyVal], 3)}</Text>
+                                          );
+                                        }
+                                        if (keys.key === 'Stream Property') {
+                                          const flag = ediOutputData.filter((edio) => {
+                                            return stream_ouput_data[val].label.toLowerCase().indexOf(edio.target) > 0;
+                                          });
+                                          if (subkey.keyVal === 'conductivity') {
+                                            if (flag.length > 0) {
+                                              return (
+                                                <Text style={Styles.tableCell}>{appendNumberText(stream_ouput_data[val].sat_indices[subkey.keyVal], 4)}</Text>
+                                              );
+                                            }
+                                            return (
+                                              <Text style={Styles.tableCell}>{appendNumberText(stream_ouput_data[val].sat_indices[subkey.keyVal], 1)}</Text>
+                                            );
+                                          }
+                                          if (subkey.keyVal === 'osmotic_pressure') {
+                                            return (
                                               <Text style={Styles.tableCell}>{appendNumberText(stream_ouput_data[val].sat_indices[subkey.keyVal])}</Text>
                                             );
-                                          })()}
-                                        </View>
-                                      );
-                                    })}
-                                  </View>
-                                );
-                              })}
-                            </View>
-                          </View>
+                                          }
+                                          return (
+                                            <Text style={Styles.tableCell}>{appendNumberText(stream_ouput_data[val].prop_dict[subkey.keyVal])}</Text>
+                                          );
+                                        }
+                                        return (
+                                          <Text style={Styles.tableCell}>{appendNumberText(stream_ouput_data[val].sat_indices[subkey.keyVal])}</Text>
+                                        );
+                                      })()}
+                                    </View>
+                                  );
+                                })}
+                              </View>
+                            );
+                          })}
                         </View>
                       </View>
                     </View>

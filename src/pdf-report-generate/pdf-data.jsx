@@ -7461,7 +7461,7 @@ export const invoiceData = {
         },
         'ionic_strength': 0.007249358931221234,
         'hardness': 186.20890345779574,
-        'label': '[ Chem_Dose_1 ] Dosed Stream'
+        'label': '[ Chem_Dose_1 ] Dosed Stream class'
       },
       '3': {
         'flow': 50.00000003999996,
@@ -8025,7 +8025,27 @@ export const invoiceData = {
         'label': '[ Product_1 ]'
       }
     },
-    'errors': [],
+    'errors': [
+      {
+        'name': 'RO-HP_1',
+        'data': [
+          'WARNING!! High LSI. LSI > 0.0. Concentrate CaCO3 exceeds saturation in RO-HP_1 Conc\n\nThe LSI (Langelier Saturation Index) for the system concentrate is a positive number. This means CaCO3 precipitation, and  subsequent loss of membrane productivity in the system as  designed is likely. A number of system design options exist to avoid CaCO3  saturation, including:\n 1) lower the system recovery, \n 2) acidify the feed by dosing with sulfuric, hydrochloric,  or other acid,\n 3) decrease the calcium concentration in the  feed by IX softening,\n 4) decrease the calcium and alkalinity  in the feed by lime or lime-soda ash softening, \n 5) reduce the likelihood of CaCO3 precipitation by injecting  a scale inhibitor in the feed (contact Veolia for advice  regarding scale inhibitor).\n',
+          'WARNING!! High SDI. SDI > 0.0. Concentrate CaCO3 exceeds saturation in RO-HP_1 Conc\n\nThe SDSI (Stiff & Davis Stability Index) for the system concentrate is a positive number. This means CaCO3 precipitation, and subsequent loss  of membrane productivity in the system, as designed is likely.  A number of system design options exist to avoid CaCO3 saturation including:\n 1) lower the system recovery, \n 2) acidify the feed by dosing with sulfuric, hydrochloric, or other acid, decrease the calcium concentration in the feed by IX softening, \n 3) decrease the calcium and alkalinity in the feed by lime or lime-soda ash softening, \n 4) reduce the likelyhood of CaCO3 precipitation by injecting a scale inhibitor in the feed (contact Veolia for advice regarding scale inhibitor).\n'
+        ]
+      }, {
+        'name': 'RO-HP_1',
+        'data': [
+          'WARNING!! High LSI. LSI > 0.0. Concentrate CaCO3 exceeds saturation in RO-HP_1 Conc\n\nThe LSI (Langelier Saturation Index) for the system concentrate is a positive number. This means CaCO3 precipitation, and  subsequent loss of membrane productivity in the system as  designed is likely. A number of system design options exist to avoid CaCO3  saturation, including:\n 1) lower the system recovery, \n 2) acidify the feed by dosing with sulfuric, hydrochloric,  or other acid,\n 3) decrease the calcium concentration in the  feed by IX softening,\n 4) decrease the calcium and alkalinity  in the feed by lime or lime-soda ash softening, \n 5) reduce the likelihood of CaCO3 precipitation by injecting  a scale inhibitor in the feed (contact Veolia for advice  regarding scale inhibitor).\n',
+          'WARNING!! High SDI. SDI > 0.0. Concentrate CaCO3 exceeds saturation in RO-HP_1 Conc\n\nThe SDSI (Stiff & Davis Stability Index) for the system concentrate is a positive number. This means CaCO3 precipitation, and subsequent loss  of membrane productivity in the system, as designed is likely.  A number of system design options exist to avoid CaCO3 saturation including:\n 1) lower the system recovery, \n 2) acidify the feed by dosing with sulfuric, hydrochloric, or other acid, decrease the calcium concentration in the feed by IX softening, \n 3) decrease the calcium and alkalinity in the feed by lime or lime-soda ash softening, \n 4) reduce the likelyhood of CaCO3 precipitation by injecting a scale inhibitor in the feed (contact Veolia for advice regarding scale inhibitor).\n'
+        ]
+      }, {
+        'name': 'RO-HP_1',
+        'data': [
+          'WARNING!! High LSI. LSI > 0.0. Concentrate CaCO3 exceeds saturation in RO-HP_1 Conc\n\nThe LSI (Langelier Saturation Index) for the system concentrate is a positive number. This means CaCO3 precipitation, and  subsequent loss of membrane productivity in the system as  designed is likely. A number of system design options exist to avoid CaCO3  saturation, including:\n 1) lower the system recovery, \n 2) acidify the feed by dosing with sulfuric, hydrochloric,  or other acid,\n 3) decrease the calcium concentration in the  feed by IX softening,\n 4) decrease the calcium and alkalinity  in the feed by lime or lime-soda ash softening, \n 5) reduce the likelihood of CaCO3 precipitation by injecting  a scale inhibitor in the feed (contact Veolia for advice  regarding scale inhibitor).\n',
+          'WARNING!! High SDI. SDI > 0.0. Concentrate CaCO3 exceeds saturation in RO-HP_1 Conc\n\nThe SDSI (Stiff & Davis Stability Index) for the system concentrate is a positive number. This means CaCO3 precipitation, and subsequent loss  of membrane productivity in the system, as designed is likely.  A number of system design options exist to avoid CaCO3 saturation including:\n 1) lower the system recovery, \n 2) acidify the feed by dosing with sulfuric, hydrochloric, or other acid, decrease the calcium concentration in the feed by IX softening, \n 3) decrease the calcium and alkalinity in the feed by lime or lime-soda ash softening, \n 4) reduce the likelyhood of CaCO3 precipitation by injecting a scale inhibitor in the feed (contact Veolia for advice regarding scale inhibitor).\n'
+        ]
+      }
+    ],
     'stream_input_dict': {
       '1': {
         'source': 'Feed_1',

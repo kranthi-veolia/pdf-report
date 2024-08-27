@@ -64,7 +64,7 @@ const Invoice = (props) => {
   return (
     <Document>
       {/* ProjectInfo page start */}
-      {(invoiceData && invoiceData.errors && invoiceData.errors.length >= 0) && (
+      {/* {(invoiceData && invoiceData.errors && invoiceData.errors.length >= 0) && (
         <Page size='A4' object-fit='fill' style={styles.page} bookmark='Preface'>
           <View style={styles.body}>
             <ProjectInfo
@@ -75,7 +75,7 @@ const Invoice = (props) => {
             />
           </View>
         </Page>
-      )}
+      )} */}
       {/* Flowsheet Design Summary */}
       {invoiceData && invoiceData.flowsheet_config_dict && Object.keys(invoiceData.flowsheet_config_dict).length > 0 && filterOptions('Flowsheet Design Summary') && (
         <Page size='A4' object-fit='fill' style={styles.page} bookmark={`${serialNum}. Flowsheet Design Summary`} >
