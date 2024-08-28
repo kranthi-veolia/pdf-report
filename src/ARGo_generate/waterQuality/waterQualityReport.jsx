@@ -12,7 +12,8 @@ function DisplayWaterQuality(props) {
       <View style={[Styles.table, { marginTop: 10, width:'90%' }]}>
         <View style={Styles.tableRow}>
           <View style={[
-            Styles.tableHeader, { width: '100%', borderTopRightRadius: 0, alignItems: 'left', paddingLeft: 10 },
+            Styles.tableHeader, { width: '100%', borderTopRightRadius: 6,
+              borderTopLeftRadius: 6, borderRightWidth:0, alignItems: 'left', paddingLeft: 10 },
           ]}>
             <Text style={[Styles.tableCellHeader]}>Water Quality Data</Text>
           </View>
@@ -22,25 +23,25 @@ function DisplayWaterQuality(props) {
             Styles.tableRCText,
             { paddingLeft: 10, alignItems: 'left' }
           ]}>
-            <Text style={Styles.tableCell}>Ion</Text>
+            <Text style={Styles.tableCellHeader}>Ion</Text>
           </View>
           <View style={[
             Styles.tableRCText,
             { paddingLeft: 10, alignItems: 'left' }
           ]}>
-            <Text style={Styles.tableCell}>Raw Feed</Text>
+            <Text style={Styles.tableCellHeader}>Raw Feed</Text>
           </View>
           <View style={[
             Styles.tableRCText,
             { paddingLeft: 10, alignItems: 'left' }
           ]}>
-            <Text style={Styles.tableCell}>Brine</Text>
+            <Text style={Styles.tableCellHeader}>Brine</Text>
           </View>
           <View style={[
             Styles.tableRCText,
-            { paddingLeft: 10, alignItems: 'left' }
+            { paddingLeft: 10, alignItems: 'left', borderRightWidth:0, }
           ]}>
-            <Text style={Styles.tableCell}>Units</Text>
+            <Text style={Styles.tableCellHeader}>Units</Text>
           </View>
         </View>
         {Object.keys(waterData['Raw Feed']).map((key, k_i) => {
@@ -48,22 +49,26 @@ function DisplayWaterQuality(props) {
             <View style={Styles.tableRow} key={k_i}>
               <View style={[
                 Styles.tableRCText,
-                { paddingLeft: 10, alignItems: 'left' }
+                { paddingLeft: 10, alignItems: 'left' },
+                k_i === Object.keys(waterData['Raw Feed']).length - 1 && { borderBottomWidth: 0 },
               ]}>
                 <Text style={Styles.tableCell}>{key}</Text>
               </View>
               <View style={[
                 Styles.tableRCText,
+                k_i === Object.keys(waterData['Raw Feed']).length - 1 && { borderBottomWidth: 0 },
               ]}>
                 <Text style={Styles.tableCell}>{waterData['Raw Feed']? waterData['Raw Feed'][key].toFixed(2) : '-'}</Text>
               </View>
               <View style={[
                 Styles.tableRCText,
+                k_i === Object.keys(waterData['Raw Feed']).length - 1 && { borderBottomWidth: 0 },
               ]}>
                 <Text style={Styles.tableCell}>{waterData.Brine? waterData.Brine[key].toFixed(2) : '-'}</Text>
               </View>
               <View style={[
-                Styles.tableRCText,
+                Styles.tableRCText, {borderRightWidth:0,},
+                k_i === Object.keys(waterData['Raw Feed']).length - 1 && { borderBottomWidth: 0 },
               ]}>
                 <Text style={Styles.tableCell}>{key === 'CCPP'? 'ppm CaCO3': ((key === 'ph' || key === 'LSI' || key === 'SDI' || key === 'Ionic Strength')? '-': 'ppm')}</Text>
               </View>

@@ -26,7 +26,8 @@ function DisplayCalculatedResults(props) {
       <View style={[Styles.table, { marginTop: 10, width:'100%' }]}>
         <View style={Styles.tableRow}>
           <View style={[
-            Styles.tableHeader, { width: '100%', borderTopRightRadius: 0, alignItems: 'left', paddingLeft: 10 },
+            Styles.tableHeader, { width: '100%', borderTopRightRadius: 6,
+              borderTopLeftRadius: 6, borderRightWidth:0, alignItems: 'left', paddingLeft: 10 },
           ]}>
             <Text style={[Styles.tableCellHeader]}>Calculation Results</Text>
           </View>
@@ -34,9 +35,9 @@ function DisplayCalculatedResults(props) {
         <View style={Styles.tableRow}>
           <View style={[
             Styles.tableRCText,
-            { paddingLeft: 10, alignItems: 'left' }
+            { paddingLeft: 10, alignItems: 'left', borderRightWidth:0, }
           ]}>
-            <Text style={Styles.tableCell}>{`Calculation based on use of ${product}`}</Text>
+            <Text style={Styles.tableCellHeader}>{`Calculation based on use of ${product}`}</Text>
           </View>
         </View>
         {key_value.map((key, k_i) => {
@@ -44,24 +45,28 @@ function DisplayCalculatedResults(props) {
             <View style={Styles.tableRow} key={k_i}>
               <View style={[
                 Styles.tableRCText,
-                { paddingLeft: 10, alignItems: 'left' }
+                { paddingLeft: 10, alignItems: 'left' },
+                k_i === Object.keys(key_value).length - 1 && { borderBottomWidth: 0 },
               ]}>
-                <Text style={Styles.tableCell}>{key.KeyText}</Text>
+                <Text style={key.KeyText === '-' ? Styles.tableCellHeader : Styles.tableCell}>{key.KeyText}</Text>
               </View>
               <View style={[
                 Styles.tableRCText,
+                k_i === Object.keys(key_value).length - 1 && { borderBottomWidth: 0 },
               ]}>
-                <Text style={Styles.tableCell}>{key.saturation}</Text>
+                <Text style={key.KeyText === '-' ? Styles.tableCellHeader : Styles.tableCell}>{key.saturation}</Text>
               </View>
               <View style={[
                 Styles.tableRCText,
+                k_i === Object.keys(key_value).length - 1 && { borderBottomWidth: 0 },
               ]}>
-                <Text style={Styles.tableCell}>{key.limits}</Text>
+                <Text style={key.KeyText === '-' ? Styles.tableCellHeader : Styles.tableCell}>{key.limits}</Text>
               </View>
               <View style={[
-                Styles.tableRCText,
+                Styles.tableRCText, {borderRightWidth:0,},
+                k_i === Object.keys(key_value).length - 1 && { borderBottomWidth: 0 },
               ]}>
-                <Text style={Styles.tableCell}>{key.max}</Text>
+                <Text style={key.KeyText === '-' ? Styles.tableCellHeader : Styles.tableCell}>{key.max}</Text>
               </View>
             </View>
           );

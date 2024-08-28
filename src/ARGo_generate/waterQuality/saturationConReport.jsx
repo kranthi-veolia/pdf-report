@@ -29,48 +29,35 @@ function DisplaySaturationConc(props) {
         <View style={Styles.tableRow}>
           {header.map((keys, i) => {
             return (<View style={[
-              Styles.tableHeader, { width: '100%', borderTopRightRadius: 0, },
-              (i === 0 && { width: '200%', paddingLeft: 10, alignItems: 'left' }),
+              Styles.tableHeader, { width: '100%' },
+              (i === 0 && { width: '200%', paddingLeft: 10, alignItems: 'left', borderTopLeftRadius: 6, }),
+              i === header.length - 1 && { borderRightWidth: 0, borderTopRightRadius: 6, },
             ]}>
               <Text style={[Styles.tableCellHeader]}>{keys}</Text>
             </View>);
           })}
         </View>
         {/* </View> */}
-        {Object.keys(saturation).map((key, k_i) => { console.log(saturation[key]);
+        {Object.keys(saturation).map((key, k_i) => {
           return (
             <View style={Styles.tableRow} key={k_i}>
               <View style={[
                 Styles.tableRCText,
-                { paddingLeft: 10, alignItems: 'left', width:'200%' }
+                { paddingLeft: 10, alignItems: 'left', width:'200%' },
+                k_i === Object.keys(saturation).length - 1 && { borderBottomWidth: 0 },
               ]}>
                 <Text style={Styles.tableCell}>{key}</Text>
               </View>
               <>
-                {header.slice(1).map((keys, k_i) => {
-                  return (<View style={[
+                {header.slice(1).map((keys, h_i) => {
+                  return (<View key={h_i} style={[
                     Styles.tableRCText,
+                    k_i === Object.keys(saturation).length - 1 && { borderBottomWidth: 0 },
                   ]}>
                     <Text style={Styles.tableCell}>{saturation[key][keys].toFixed(2)}</Text>
                   </View>);
                 })}
               </>
-
-              {/* <View style={[
-                Styles.tableRCText,
-              ]}>
-                <Text style={Styles.tableCell}>{key.saturation}</Text>
-              </View>
-              <View style={[
-                Styles.tableRCText,
-              ]}>
-                <Text style={Styles.tableCell}>{key.limits}</Text>
-              </View>
-              <View style={[
-                Styles.tableRCText,
-              ]}>
-                <Text style={Styles.tableCell}>{key.max}</Text>
-              </View> */}
             </View>
           );
         })}

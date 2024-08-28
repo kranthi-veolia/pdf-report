@@ -1,5 +1,5 @@
 import { StyleSheet } from '@react-pdf/renderer';
-import { ArialRegural, ArialB600, RationValWidth } from './fonts/font';
+import { ArialRegural, ArialB600, RationValWidth, ArialB700 } from './fonts/font';
 
 const tabelborderColor = '#B3D3D7';
 export const Styles = StyleSheet.create({

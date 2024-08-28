@@ -7,6 +7,7 @@ import { ArgoinvoiceData } from './ARGo_generate/pdf-data';
 import Invoice from './pdf-report-generate';
 import ArgoReport from './ARGo_generate';
 import GoogleInvoice from './google-sheets-genrator';
+import MyChartComponent from './ARGo_generate/chartComponent';
 
 class App extends Component {
   render() {
@@ -35,6 +36,7 @@ class App extends Component {
       <PDFViewer width="100%" height="2100vh" className="app" zoom='269%'>
         <ArgoReport report_invoice={ArgoinvoiceData} pdfoption={pdfoption} />
       </PDFViewer>
+      // <MyChartComponent />
       // <GoogleInvoice report_invoice={invoiceData} pdfoption={pdfoption}/>
       //   <div>
       //   <PDFDownloadLink document={<Invoice invoice={invoiceData} />} fileName="somename.pdf">

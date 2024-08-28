@@ -297,7 +297,13 @@ export const ArgoinvoiceData = {
   },
   'Treatment and Summary': {
     'Membrane Manufacturer': '',
-    'Membrane Model Code': ''
+    'Membrane Model Code': '',
+    'Feed Flow': 300.0,
+    'Brine Flow': 0.020790108227523835,
+    Recovery: 75,
+    'Selected Product': 'Hypersperse MDC700',
+    'Feed Dosage': '3.76 ppm',
+    'Conc Dosage': '15.04 ppm',
   }
 };
 export const invoiceData1 = {

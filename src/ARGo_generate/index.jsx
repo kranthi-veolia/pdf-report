@@ -65,7 +65,7 @@ const ArgoReport = (props) => {
   return (
     <Document>
       {/* ProjectInfo page start */}
-      {/* {(invoiceData && invoiceData['Treatment and Summary']) && (
+      {(invoiceData && invoiceData['Treatment and Summary']) && (
         <Page size='A4' object-fit='fill' style={styles.page} bookmark='Preface'>
           <View style={styles.body}>
             <ProjectInfo
@@ -77,7 +77,7 @@ const ArgoReport = (props) => {
             />
           </View>
         </Page>
-      )} */}
+      )}
       {/* Flowsheet Design Summary */}
       {invoiceData && invoiceData['Water Quality Data'] && Object.keys(invoiceData['Water Quality Data']).length > 0 && (
         <Page size='A4' object-fit='fill' style={styles.page} bookmark={`${serialNum}. Flowsheet Design Summary`} >
