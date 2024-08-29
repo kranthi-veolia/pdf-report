@@ -1,5 +1,6 @@
-import React, { PureComponent } from 'react';
-import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import React, { useRef, useState, useEffect } from 'react';
+import { Text, View, Svg, Rect  } from '@react-pdf/renderer';
+import { ScatterChart, Scatter, CartesianGrid } from 'recharts';
 import HtmlSvgToPdfSvg from '../imageFromSvg';
 
 const data = [
@@ -12,27 +13,26 @@ const data = [
 ];
 
 const CustomScatterChart = () => {
+  const svgRef = useRef(null);
+  const [chartReady, setChartReady] = useState(false);
+
+  useEffect(() => {
+    // You might need a more reliable way to check if the chart is ready.
+    const timer = setTimeout(() => setChartReady(true), 1000); // Example delay
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <div className="recharts-wrapper">
-      <ScatterChart
-        width={400}
-        height={400}
-        margin={{
-          top: 20,
-          right: 20,
-          bottom: 20,
-          left: 20,
-        }}
-      >
-        <CartesianGrid />
-        {/* <XAxis type="number" dataKey="x" name="stature" unit="cm" />
-      <YAxis type="number" dataKey="y" name="weight" unit="kg" /> */}
-        <Scatter isAnimationActive={false} name="A school" data={data} fill="#8884d8" />
-      </ScatterChart>
-      <HtmlSvgToPdfSvg />
-      {/* {HtmlSvgToPdfSvg()} */}
-    </div>
+    // <div className="recharts-wrapper" ref={svgRef}>
+    <ScatterChart width={400} height={400} margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
+      <CartesianGrid />
+      <Scatter isAnimationActive={false} name="A school" data={data} fill="#8884d8" />
+    </ScatterChart>
+  // {/* {setTimeout(()=>{
+  //   return (<HtmlSvgToPdfSvg svgRef={svgRef} />);
+  // }, 1000)} */}
+  // {/* {chartReady && <HtmlSvgToPdfSvg svgRef={svgRef} />} */}
+    // </div>
   );
 };
 

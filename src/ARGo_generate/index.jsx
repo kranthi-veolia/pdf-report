@@ -2,8 +2,8 @@
 /* eslint-disable no-console */
 /* eslint-disable no-plusplus */
 /* eslint-disable prefer-const */
-import React from 'react';
-import { Page, Document, StyleSheet, View, Text } from '@react-pdf/renderer';
+import React, {useState}from 'react';
+import { Page, Document, StyleSheet, View, Text, Image } from '@react-pdf/renderer';
 // import DisplayEDITables from './EDI_unitop';
 import HeaderSection from './pdf-header-footer/header-section';
 import FooterSection from './pdf-header-footer/footer-section';
@@ -19,8 +19,8 @@ import ProjectInfo from './project-info/project-info';
 // import FlowsheetDesign from './flowsheet_summary/flowsheet-design/flowsheet_design';
 import { RationValWidth } from './fonts/font';
 import DisplayArgoTables from './waterQuality';
-// import MixerSplitter from './mixer-splitter/mixer-splitter';
-// import DisplayStripper from './stripper/stripper';
+// import MixerSplitter from './mixer-splitter/mixer-splitter'
+// import ChartComponent from './chartComponent';
 // import RoElement from './ro_element/ro-element';
 // import ROStageLevelSummary from './ro-unit/ro-stage-level-summary';
 // import CLROStageLevelSummary from './ro-unit/clro-stage-level-summary';
@@ -61,6 +61,11 @@ const ArgoReport = (props) => {
     const filterValues = pdfoption.filter((val) => val.label === SectionName);
     if (filterValues[0].disabled === false || filterValues[0].checked === false) { return false; }
     return true;
+  };
+  const [chartImageUrl, setChartImageUrl] = useState('');
+
+  const handleImageReady = (imageUrl) => {
+    setChartImageUrl(imageUrl);
   };
   return (
     <Document>
@@ -115,6 +120,18 @@ const ArgoReport = (props) => {
           <FooterSection version={invoiceData.project_details} fixed />
         </Page>
       )} */}
+      {/* <Page size='A4' object-fit='fill' style={styles.page} bookmark={`${serialNum}. Flowsheet Design Summary`} >
+        <HeaderSection version={invoiceData.project_details} fixed />
+        <View style={styles.body}>
+          <Text>Chart:</Text>
+          {chartImageUrl ? (
+            <Image src={chartImageUrl} style={styles.image} />
+          ) : (
+            <Text>Loading chart...</Text>
+          )}
+        </View>
+        <FooterSection version={invoiceData.project_details} fixed />
+      </Page> */}
       {!invoiceData && (
         <Page size='A4' object-fit='fill'>
           <HeaderSection version='' />
@@ -124,6 +141,9 @@ const ArgoReport = (props) => {
           <FooterSection blank='empty' version='' />
         </Page>
       )}
+      {/* <div style={{ visibility: 'hidden', position: 'absolute', height: 0, width: 0 }}>
+        <ChartComponent onImageReady={handleImageReady} />
+      </div> */}
     </Document>
   );
 };

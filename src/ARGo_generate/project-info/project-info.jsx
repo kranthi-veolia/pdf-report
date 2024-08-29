@@ -91,7 +91,6 @@ const ProjectInfo = (props) => {
                   <View key={ind} style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                     {
                       Object.keys(ele).map((data, i) => {
-                        console.log(ele, data, ele[data]);
                         return (
                           <React.Fragment key={i}>
                             <Text style={[project_info.textContent, { width: '25%' }]}>•  {data}</Text>
