@@ -21,7 +21,7 @@ function DisplayWaterQuality(props) {
         <View style={Styles.tableRow}>
           <View style={[
             Styles.tableRCText,
-            { paddingLeft: 10, alignItems: 'left' }
+            { paddingLeft: 10, alignItems: 'left', width:'120%' }
           ]}>
             <Text style={Styles.tableCellHeader}>Ion</Text>
           </View>
@@ -39,7 +39,7 @@ function DisplayWaterQuality(props) {
           </View>
           <View style={[
             Styles.tableRCText,
-            { paddingLeft: 10, alignItems: 'left', borderRightWidth:0, }
+            { paddingLeft: 10, alignItems: 'left', borderRightWidth:0, width:'80%' }
           ]}>
             <Text style={Styles.tableCellHeader}>Units</Text>
           </View>
@@ -49,7 +49,7 @@ function DisplayWaterQuality(props) {
             <View style={Styles.tableRow} key={k_i}>
               <View style={[
                 Styles.tableRCText,
-                { paddingLeft: 10, alignItems: 'left' },
+                { paddingLeft: 10, alignItems: 'left', width:'120%'},
                 k_i === Object.keys(waterData['Raw Feed']).length - 1 && { borderBottomWidth: 0 },
               ]}>
                 <Text style={Styles.tableCell}>{key}</Text>
@@ -67,7 +67,7 @@ function DisplayWaterQuality(props) {
                 <Text style={Styles.tableCell}>{waterData.Brine? waterData.Brine[key].toFixed(2) : '-'}</Text>
               </View>
               <View style={[
-                Styles.tableRCText, {borderRightWidth:0,},
+                Styles.tableRCText, {borderRightWidth:0, width:'80%' },
                 k_i === Object.keys(waterData['Raw Feed']).length - 1 && { borderBottomWidth: 0 },
               ]}>
                 <Text style={Styles.tableCell}>{key === 'CCPP'? 'ppm CaCO3': ((key === 'ph' || key === 'LSI' || key === 'SDI' || key === 'Ionic Strength')? '-': 'ppm')}</Text>

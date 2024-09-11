@@ -1,51 +1,50 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable max-len */
-/* eslint-disable no-console */
-/* eslint-disable no-use-before-define */
 import React from 'react';
-import moment from 'moment';
-import { Link, Path, Svg, Text, View, Defs, Stop, LinearGradient, G, ClipPath } from '@react-pdf/renderer';
-import { ArialRegural, ArialB600, ArialB700, RationValWidth, RationValHeight, getFloatVal, ChineseFonts } from '../fonts/font';
+import { Text, View, Svg, Path, Defs, Stop, LinearGradient, G, ClipPath } from '@react-pdf/renderer';
+import { ArialRegural, ArialB600, RationValWidth, RationValHeight, ChineseFonts } from '../fonts/font';
 import SubLine from '../createLine';
-import { project_info } from './project-info_style';
 import DisplayPlantData from '../PlantData';
+import { project_info } from './project-info_style';
 import ProgramDetails from './program_details';
 
-const tableHeader = (str) => {
-  return (
-    <View style={project_info.textHeader}>
-      <SubLine lineWidth={RationValWidth(32)} lineHeight='1' color='#002D62' />
-      <Text style={{ paddingLeft: RationValWidth(10) }}>{str}</Text>
-    </View>
-  );
-};
-const ProjectInfo = (props) => {
-  const { info, pageWidth, project, Dosage, plantData } = props;
-  console.log(info);
-  const val = [{ 'Selected Product': project }, { 'Required Dosage': Dosage }, { 'Feed Flow':info['Feed Flow'] }, { 'Brine Flow': info['Brine Flow']}, { 'Recovery': `${info.Recovery } %` },  { 'Feed Dosage': info['Feed Dosage'] }, { 'Concentrate Dosage': info['Conc Dosage'] }, { 'Membrane Manufacturer': info['Membrane Manufacturer'] }, { 'Membrane Model Code': info['Membrane Model Code'] }];
-  // const val1 = [{ 'Notes': 'notes' }, { 'Created': 'datatime created' }, { 'Last Modified': 'datatime modified' }, { 'A & B Option': 'a_b_option' }, { 'System of Units': 'system_units' }];
-  const val1 = [{ 'Notes': 'Please note that the dosage provided is only an indication and needs to be validated by a Veolia expert. The foregoing recommendations are given in good faith and are based on the analytical and operation data you have entered, and on application data which we believe to be correct. No warranty as to specific application is expressed or implied since conditions of use and other contributory factors are beyond our control Please seek advice from your Veolia membrane chemicals specialist with regard to any particular query.\n \n If you have questions or concerns about the use or distribution of Argo Analyzer please contact your regional Veolia representative.' }];
-  console.log(val1);
-  const printData = (data) => {
-    if (Object.prototype.toString.call(data) === '[object Object]') {
-      return Object.values(data).join(', ');
-    }
-    return data || '-';
-  };
+// Component to render the header of a table section
+const TableHeader = ({ title }) => (
+  <View style={project_info.textHeader}>
+    <SubLine lineWidth={RationValWidth(32)} lineHeight='1' color='#002D62' />
+    <Text style={{ paddingLeft: RationValWidth(10) }}>{title}</Text>
+  </View>
+);
+
+// Component to render a single row of data
+const DataRow = ({ label, value }) => (
+  <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+    <Text style={[project_info.textContent, { width: '25%' }]}>•  {label}</Text>
+    <Text style={{ width: '75%', fontSize: RationValWidth(18), fontFamily: ChineseFonts }}>{value || '-'}</Text>
+  </View>
+);
+// Main component to display project information
+const ProjectInfo = ({ info, pageWidth, project, Dosage, plantData }) => {
+  // Array of objects representing the data to be displayed
+  const values = [
+    { label: 'Selected Product', value: project },
+    { label: 'Required Dosage', value: Dosage },
+    { label: 'Feed Flow', value: info['Feed Flow'] },
+    { label: 'Brine Flow', value: info['Brine Flow'] },
+    { label: 'Recovery', value: info.Recovery ? `${info.Recovery} %` : undefined },
+    { label: 'Feed Dosage', value: info['Feed Dosage'] },
+    { label: 'Concentrate Dosage', value: info['Conc Dosage'] },
+    { label: 'Membrane Manufacturer', value: info['Membrane Manufacturer'] },
+    { label: 'Membrane Model Code', value: info['Membrane Model Code'] }
+  ];
+  // Note content as a string
+  // eslint-disable-next-line max-len
+  const notes = 'Please note that the dosage provided is only an indication and needs to be validated by a Veolia expert. The foregoing recommendations are given in good faith and are based on the analytical and operation data you have entered, and on application data which we believe to be correct. No warranty as to specific application is expressed or implied since conditions of use and other contributory factors are beyond our control Please seek advice from your Veolia membrane chemicals specialist with regard to any particular query.\n \n If you have questions or concerns about the use or distribution of Argo Analyzer please contact your regional Veolia representative.';
+
   return (
     <View style={{ fontFamily: ArialRegural }} wrap>
-      {/* header part first Page Start */}
-      {/* header part first Page End */}
-      {/* Notes Ends */}
-      {/* <View style={[project_info.mainHeader, { width: RationValWidth(pageWidth) }]}>
-        <View style={{ width: '13%' }}>
-          <Text>Preface</Text>
-        </View> */}
-      {/* I reduced the line width to accommodate the text and added a margin left. --->kranthi */}
-      {/* <SubLine lineWidth='100%' lineHeight='24' />
-      </View> */}
-      {/* Project Info  Start */}
-      <View style={{ top: RationValHeight(64), borderRadius: 5, width: RationValWidth(pageWidth), height: RationValHeight(397), border: 1, backgroundColor: '#002D62', borderColor: '#002D62' }} >
+      {/* Container for the header and SVG graphics */}
+      <View style={{ top: RationValHeight(64), borderRadius: 5, width: RationValWidth(pageWidth), height: RationValHeight(397), border: 1, backgroundColor: '#002D62', borderColor: '#002D62' }}>
+        {/* SVG and other static content can be here */}
         <Svg width={RationValWidth(1128)} height={RationValHeight(397)} viewBox="0 0 1128 397">
           <Defs>
             <LinearGradient id="myLinearGradient">
@@ -57,7 +56,7 @@ const ProjectInfo = (props) => {
         </Svg>
         <View style={[project_info.membrane_system]}>
           <View style={{ fontSize: RationValWidth(57), lineHeight: 1.2, fontFamily: ArialB600,  width: RationValWidth(1000)}}>
-            <Text>Argo Analyzer Report for DJ,</Text>
+            <Text>Argo Analyzer Report</Text>
             <Text>Hypersperse Antiscalant Projection</Text>
           </View>
           <View style={{ fontFamily: ArialRegural }}>
@@ -81,66 +80,24 @@ const ProjectInfo = (props) => {
           </View>
         </View>
       </View>
+      {/* Container for the main content section */}
       <View style={[project_info.infoTableHeader, { marginTop: RationValHeight(100) }]}>
-        <View style={{ height: '100%' }}>
-          {tableHeader('Projection Summary')}
-          <View style={{ top: RationValHeight(8), flexDirection: 'row', justifyContent: 'space-between' }}>
-            <View style={{ width: '100%', marginLeft: RationValWidth(32) }}>
-              {val.map((ele, ind) => {
-                return (
-                  <View key={ind} style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                    {
-                      Object.keys(ele).map((data, i) => {
-                        console.log(ele, data, ele[data]);
-                        return (
-                          <React.Fragment key={i}>
-                            <Text style={[project_info.textContent, { width: '25%' }]}>•  {data}</Text>
-                            <Text style={{ width: '75%', fontSize: RationValWidth(18), fontFamily: ChineseFonts }}>{ele[data] || '-'}</Text>
-                          </React.Fragment>
-                        );
-                      })
-                    }
-                  </View>
-                );
-              })}
-            </View>
-          </View>
-          {/* </View> */}
-          {/* Notes Starts */}
-          {/* <View> */}
-          <Text style={[project_info.textHeaderContent, { width: '100%', fontFamily: ArialB600, top: RationValHeight(18)}]}>•  Notes</Text>
-          <View style={{ marginLeft: RationValWidth(8) }}>
-            {val1.map((ele, ind) => {
-              return (
-                <View key={ind} style={{ flexDirection: 'row' }}>
-                  {Object.keys(ele).map((data, i) => {
-                    return (
-                      <React.Fragment key={i}>
-                        <Text style={{ width: '100%', fontSize: RationValWidth(18), fontFamily: ChineseFonts }}>{printData(ele[data])}</Text>
-                      </React.Fragment>
-                    );
-                  })}
-                </View>
-              );
-            })}
-          </View>
-          <SubLine lineWidth='100%' lineHeight='24' color='#B3D3D7' />
-          {tableHeader('Project Data Summary')}
-          {/* Winflows 5 Program details and Report Details Start */}
-          <View style={{ marginLeft: RationValWidth(2), paddingRight: '10px', paddingBottom:'10px', flexDirection: 'row'}}>
-            <View style={{width: RationValWidth(520)}}>
-              <DisplayPlantData plantData={plantData} />
-            </View>
-            {/* <View style={{width: RationValWidth(520)}}>
-              <DisplayPlantData plantData={plantData} />
-            </View> */}
-          </View>
+        <TableHeader title="Projection Summary" />
+        <View style={{ top: RationValHeight(8), justifyContent: 'space-between', marginLeft: RationValWidth(32) }}>
+          {values.map((item, index) => (
+            <DataRow key={index} label={item.label} value={item.value} />
+          ))}
         </View>
-
-        {/* Contact for Technical Support End */}
+        {/* <Text style={[project_info.textHeaderContent, { width: '100%', fontFamily: ArialB600, top: RationValHeight(18) }]}>{}</Text> */}
+        <Text style={{ marginLeft: RationValWidth(8), fontSize: RationValWidth(18), fontFamily: ChineseFonts, top: RationValHeight(18) }}>{notes}</Text>
+        <SubLine lineWidth='100%' lineHeight='24' color='#B3D3D7' />
+        <TableHeader title="Project Data Summary" />
+        <View style={{ marginLeft: RationValWidth(2), paddingRight: '10px', paddingBottom: '10px', flexDirection: 'row' }}>
+          <DisplayPlantData plantData={plantData} />
+        </View>
       </View>
-      {/* Project Info  End */}
     </View>
   );
 };
+
 export default ProjectInfo;

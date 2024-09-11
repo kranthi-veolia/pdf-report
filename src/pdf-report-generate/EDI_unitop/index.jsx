@@ -17,22 +17,22 @@ function DisplayEDITables(props) {
       {/* EDI First table */}
       {(invoice.edi_summary.system_summary) && (
         <View bookmark={{ title: `${serialNum}.${subSerialNum}  Docked Summary` }}>
-          <Table1
+          {/* <Table1
             system_summary={invoice.edi_summary.system_summary}
             serialNum={serialNum}
             subSerialNum={subSerialNum++}
-          />
+          /> */}
         </View>
       )}
       {/* EDI SEcound Table */}
       {(invoice.edi_summary.ventil_summary && invoice.edi_summary.system_summary) && (
         <View style={{ marginTop: 0 }} bookmark={{ title: `${serialNum}.${subSerialNum}  Ventilation Sizing` }} break>
-          <Table2
+          {/* <Table2
             system_summary={invoice.edi_summary.system_summary}
             ventil_summary={invoice.edi_summary.ventil_summary}
             serialNum={serialNum}
             subSerialNum={subSerialNum++}
-          />
+          /> */}
         </View>
       )}
       {/* {(invoice.edi_summary.ventil_summary && invoice.edi_summary.system_summary) && (
@@ -43,12 +43,12 @@ function DisplayEDITables(props) {
       {/* EDI Third Table */}
       {(invoice.edi_summary.design_summary && invoice.edi_summary.system_summary) && (
         <View bookmark={{ title: `${serialNum}.${subSerialNum}  EDI Design Parameters` }} break>
-          <Table3
+          {/* <Table3
             system_summary={invoice.edi_summary.system_summary}
             design_summary={invoice.edi_summary.design_summary}
             serialNum={serialNum}
             subSerialNum={subSerialNum++}
-          />
+          /> */}
         </View>
       )}
       {/* EDI Schematics */}

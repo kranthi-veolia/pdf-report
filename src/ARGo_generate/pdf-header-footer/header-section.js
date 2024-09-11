@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { Defs, G, Path, Rect, Svg, Text, View } from '@react-pdf/renderer';
+import { Path, Svg, Text, View } from '@react-pdf/renderer';
 import { RationValWidth, ArialRegural, ArialB600} from '../fonts/font';
 import { Styles } from '../tableStyles';
 

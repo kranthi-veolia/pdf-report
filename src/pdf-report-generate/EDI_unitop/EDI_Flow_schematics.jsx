@@ -24,19 +24,26 @@ const EDIFSstyles = StyleSheet.create({
     margin: '5'
   },
   subBox: {
-    width: '25%',
+    width: '35%',
     display: 'flex',
     alignItems: 'center',
     fontSize: RationValWidth(25),
     justifyContent: 'center',
     fontFamily: ArialB600,
-    backgroundColor: '#002D62',
+    backgroundColor: '#FFF',
     margin: 1,
-    color:'#ffffff'
+    color:'#002D62',
+    border: '1px solid #002D62'
   },
   LeftArrow: {
     justifyContent: 'center',
-    width: '122px',
+    alignItems:'center',
+    width: '135px',
+  },
+  LeftArrow1: {
+    justifyContent: 'flex-end',
+    alignItems:'flex-end',
+    width: '135px',
   },
   DiluteBox: {
     flexDirection: 'row',
@@ -46,6 +53,11 @@ const EDIFSstyles = StyleSheet.create({
   DetailsBox: {
     flexDirection: 'column',
     margin: '0 auto',
+  },
+  DetailsBox1: {
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+    alignItems:'flex-end',
   },
   TextStyle: {
     fontFamily: ArialB600,
@@ -85,19 +97,16 @@ const EDIFlowschematics = (props) => {
         return (
           <View key={i} style={EDIFSstyles.EDIFlowschematics} break>
             <View style={[EDIFSstyles.subHeader, { marginTop: 10 }]}>
-              {/* <SubLine lineWidth='10px' lineHeight='12' /> */}
-              {/* <Text style={{ marginTop: -4, paddingLeft: 15, color: '#0062A9' }}>&#95;&#95;</Text> */}
               <Text style={{ paddingLeft: 0 }}>{serialNum}.{subSerialNum++}</Text>
               <Text style={{ paddingLeft: 5 }}>EDI Schematic</Text>
             </View>
             <View style={EDIFSstyles.Box}>
+              <View style={EDIFSstyles.DetailsBox1}><Text style={EDIFSstyles.TextStyle}>Flow Configuration - {EDISchematics['Flow Configuration']}</Text></View>
               <View style={EDIFSstyles.DetailsBox}>
-                <View style={EDIFSstyles.LeftArrow} />
                 <Text style={EDIFSstyles.HeadTextStyle}>Current/Stack = {EDISchematics.current_stack.toFixed(2)} A</Text>
                 <Text style={EDIFSstyles.HeadTextStyle}>Stack Voltage = {EDISchematics.voltage.toFixed(2)} V</Text>
                 <Text style={EDIFSstyles.HeadTextStyle}>Energy Consumption = {EDISchematics.energy_cons.toFixed(2)} kWh/ m3</Text>
                 <Text style={EDIFSstyles.HeadTextStyle}>Maximum Recovery = {EDISchematics.max_all_recovery.toFixed(2)} %</Text>
-                <View style={EDIFSstyles.LeftArrow} />
               </View>
 
               {/* Starts Dilute by kranthi */}
@@ -105,7 +114,7 @@ const EDIFlowschematics = (props) => {
                 <View style={EDIFSstyles.LeftArrow}>
                   <Text style={EDIFSstyles.TextStyle}>Feed pressure = {EDISchematics.feed_pressure.toFixed(2)} {system_summary.units['Feed Pressure']}</Text>
                   <Text style={EDIFSstyles.TextStyle}>Feed Flow = {EDISchematics.feed_flow.toFixed(2)}  {system_summary.units['Feed Flow']}</Text>
-                  <Svg width='122.837' height='20.559' viewBox='0 0 262.837 20.559'>
+                  <Svg width='152.837' height='10.559' viewBox='0 0 262.837 20.559'>
                     <G id='Group_28523' transform='translate(0)'>
                       <Line x1='0' y1='0' x2='255.615' y2='0' transform='translate(0 10.277)' fill='none' stroke='#002D62' strokeWidth='2' />
                       <Path id='Path_34076' d='M-15326.48,8311.508v17.863l10.281-10.279-10.281-10.279Z' transform='translate(15579.037 -8308.813)' fill='#002D62' />
@@ -118,7 +127,7 @@ const EDIFlowschematics = (props) => {
                 <View style={EDIFSstyles.LeftArrow}>
                   <Text style={EDIFSstyles.TextStyle}>Product pressure = {EDISchematics.prod_pressure.toFixed(2)} {system_summary.units['Feed Pressure']}</Text>
                   <Text style={EDIFSstyles.TextStyle}>Product Flow = {EDISchematics.prod_flow.toFixed(2)}  {system_summary.units['Feed Flow']}</Text>
-                  <Svg width='122.837' height='20.559' viewBox='0 0 262.837 10.559'>
+                  <Svg width='152.837' height='10.559' viewBox='0 0 262.837 20.559'>
                     <G id='Group_28523' transform='translate(0)'>
                       <Line x1='0' y1='0' x2='255.615' y2='0' transform='translate(0 10.277)' fill='none' stroke='#002D62' strokeWidth='2' />
                       <Path id='Path_34076' d='M-15326.48,8311.508v17.863l10.281-10.279-10.281-10.279Z' transform='translate(15579.037 -8308.813)' fill='#002D62' />
@@ -133,7 +142,7 @@ const EDIFlowschematics = (props) => {
                   <View style={EDIFSstyles.DiluteBox}>
                     <View style={EDIFSstyles.LeftArrow}>
                       <Text style={EDIFSstyles.TextStyle}>Max. Conc. inlet pressure = {EDISchematics.max_conc_inlet_press.toFixed(2)}  {system_summary.units['Feed Pressure']}</Text>
-                      <Svg width='122.837' height='20.559' viewBox='0 0 262.837 20.559'>
+                      <Svg width='152.837' height='10.559' viewBox='0 0 262.837 20.559'>
                         <G id='Group_28523' transform='translate(0)'>
                           <Line x1='0' y1='0' x2='255.615' y2='0' transform='translate(0 10.277)' fill='none' stroke='#002D62' strokeWidth='2' />
                           <Path id='Path_34076' d='M-15326.48,8311.508v17.863l10.281-10.279-10.281-10.279Z' transform='translate(15579.037 -8308.813)' fill='#002D62' />
@@ -146,7 +155,7 @@ const EDIFlowschematics = (props) => {
                     <View style={EDIFSstyles.LeftArrow}>
                       <Text style={EDIFSstyles.TextStyle}>Max. Conc. outlet pressure = {EDISchematics.max_conc_outlet_press.toFixed(2)}  {system_summary.units['Feed Pressure']}</Text>
                       <Text style={EDIFSstyles.TextStyle}>Conc. Bleed flow = {EDISchematics.conc_bleed_flow.toFixed(2)}  {system_summary.units['Feed Flow']}</Text>
-                      <Svg width='122.837' height='20.559' viewBox='0 0 262.837 20.559'>
+                      <Svg width='152.837' height='10.559' viewBox='0 0 262.837 20.559'>
                         <G id='Group_28523' transform='translate(0)'>
                           <Line x1='0' y1='0' x2='255.615' y2='0' transform='translate(0 10.277)' fill='none' stroke='#002D62' strokeWidth='2' />
                           <Path id='Path_34076' d='M-15326.48,8311.508v17.863l10.281-10.279-10.281-10.279Z' transform='translate(15579.037 -8308.813)' fill='#002D62' />
@@ -159,7 +168,7 @@ const EDIFlowschematics = (props) => {
                     <View style={EDIFSstyles.LeftArrow}>
                       <Text style={EDIFSstyles.TextStyle}>Max. Conc. outlet pressure = {EDISchematics.max_conc_outlet_press.toFixed(2)}  {system_summary.units['Feed Pressure']}</Text>
                       <Text style={EDIFSstyles.TextStyle}>Conc. Bleed flow = {EDISchematics.conc_bleed_flow.toFixed(2)}  {system_summary.units['Feed Flow']}</Text>
-                      <Svg width='122.447' height='20.559' viewBox='0 0 262.447 20.559'>
+                      <Svg width='152.837' height='10.559' viewBox='0 0 262.447 20.559'>
                         <Line x2='0' y1='0' x1='255.226' y2='0' transform='translate(7.222 10.277)' fill='none' stroke='#002D62' strokeWidth='2' />
                         <Path d='M-15316.2,8311.508v17.863l-10.281-10.279,10.281-10.279Z' transform='translate(15326.48 -8308.813)' fill='#002D62' />
                       </Svg>
@@ -169,7 +178,7 @@ const EDIFlowschematics = (props) => {
                     </View>
                     <View style={EDIFSstyles.LeftArrow}>
                       <Text style={EDIFSstyles.TextStyle}>Max. Conc. inlet pressure = {EDISchematics.max_conc_inlet_press.toFixed(2)}  {system_summary.units['Feed Pressure']}</Text>
-                      <Svg width='122.447' height='20.559' viewBox='0 0 262.447 20.559'>
+                      <Svg width='152.837' height='10.559' viewBox='0 0 262.447 20.559'>
                         <Line x2='0' y1='0' x1='255.226' y2='0' transform='translate(7.222 10.277)' fill='none' stroke='#002D62' strokeWidth='2' />
                         <Path d='M-15316.2,8311.508v17.863l-10.281-10.279,10.281-10.279Z' transform='translate(15326.48 -8308.813)' fill='#002D62' />
                       </Svg>
@@ -186,7 +195,7 @@ const EDIFlowschematics = (props) => {
                 <View style={EDIFSstyles.LeftArrow}>
                   <Text style={EDIFSstyles.TextStyle}>Max. Electrode Bleed Pressure = {EDISchematics.max_electrode_bleed_press.toFixed(2)}  {system_summary.units['Feed Pressure']}</Text>
                   <Text style={EDIFSstyles.TextStyle}>Electrode Bleed flow = {EDISchematics.electrode_bleed_flow.toFixed(2)}  {system_summary.units['Feed Flow']}</Text>
-                  <Svg width='122.837' height='20.559' viewBox='0 0 262.837 20.559'>
+                  <Svg width='152.837' height='10.559' viewBox='0 0 262.837 20.559'>
                     <G id='Group_28523' transform='translate(0)'>
                       <Line x1='0' y1='0' x2='255.615' y2='0' transform='translate(0 10.277)' fill='none' stroke='#002D62' strokeWidth='2' />
                       <Path id='Path_34076' d='M-15326.48,8311.508v17.863l10.281-10.279-10.281-10.279Z' transform='translate(15579.037 -8308.813)' fill='#002D62' />

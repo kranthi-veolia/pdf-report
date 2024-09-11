@@ -2,8 +2,8 @@
 /* eslint-disable max-len */
 import React from 'react';
 import moment from 'moment';
-import { Link, Path, Svg, Text, View, Defs, Stop, LinearGradient, G, ClipPath } from '@react-pdf/renderer';
-import { ArialRegural, ArialB600, ArialB700, RationValWidth, RationValHeight, getFloatVal, ChineseFonts } from '../fonts/font';
+import { Link, Path, Svg, Text, View } from '@react-pdf/renderer';
+import { ArialB600, RationValWidth, RationValHeight } from '../fonts/font';
 import SubLine from '../createLine';
 import { Styles } from '../tableStyles';
 import { project_info } from './project-info_style';

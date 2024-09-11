@@ -6152,7 +6152,218 @@ export const invoiceData = {
         'selected': false
       }
     ],
-    'edi_summary': {},
+    'edi_summary': {
+      'system_summary': {
+        'units': {
+          'Upstream unit': '-',
+          'Downstream unit': '-',
+          'Feed Flow': 'gpm',
+          'Product Flow': 'gpm',
+          'Concentrate Flow': 'gpm',
+          'Electrode Bleed Flow': 'gpm',
+          'EDI Unit Recovery': '%',
+          'Flow Per EDI Stack': 'gpm',
+          'Number of EDI Stack': 'no.',
+          'Feed Temperature': '°C',
+          'Feed Pressure': 'atm',
+          'Concentrate Pressure': 'atm',
+          'Product Outlet Pressure': 'atm',
+          'Current': 'Amps',
+          'Voltage': 'Volts',
+          'AC Power': 'KWh',
+          'Co-Current Flow': 'Yes/No',
+          'Feed TDS': 'mg/L',
+          'Feed pH': '-',
+          'Product Resistivity': 'MOhm.cm',
+          'Product pH': '-',
+          'Concentrate TDS': 'mg/L',
+          'Concentrate pH': '-',
+          'Electrode Bleed TDS': 'mg/L',
+          'Electrode Bleed pH': '-'
+        },
+        'EDI_1': {
+          'Upstream unit': 'RO-HP_3',
+          'Downstream unit': 'Product_1, Waste_3, Waste_2, ',
+          'Feed Flow': 183.78918930345006,
+          'Product Flow': 176.4294966785078,
+          'Concentrate Flow': 4.578996495306529,
+          'Electrode Bleed Flow': 2.800012328067487,
+          'EDI Unit Recovery': 95.99540167391497,
+          'Flow Per EDI Stack': 25.000077825328898,
+          'Number of EDI Stack': 8,
+          'Feed Temperature': 30,
+          'Feed Pressure': 5.44,
+          'Concentrate Pressure': 2.368615840118431,
+          'Product Outlet Pressure': 3.352399138087014,
+          'Current': 5.078405818024496,
+          'Voltage': 35.50428259820083,
+          'AC Power': 0.25757879330212713,
+          'Co-Current Flow': 'No',
+          'Feed TDS': 0.005251777624298365,
+          'Feed pH': 6.814283614986694,
+          'Product Resistivity': 16,
+          'Product pH': 0.8277632642402957,
+          'Concentrate TDS': 25.74377451391051,
+          'Concentrate pH': 4.5744184951121145,
+          'Electrode Bleed TDS': 1.4400421838376745,
+          'Electrode Bleed pH': 6.089932829937603
+        },
+        'EDI Unit ID': [
+          'EDI_1'
+        ]
+      },
+      'Total No.of EDI  Unitop': 1,
+      'ventil_summary': {
+        'units': {
+          'Electrode Gas Generation': {
+            'H2': 'ml/min',
+            'C2': 'ml/min',
+            '-': 'kg/h'
+          },
+          'Blower/Ventilation Sizing for H2': {
+            'Explosion limit of H2 in Air': '%',
+            'Design Safety Factor': '%',
+            'Ventilation Blower/Fan': 'cmh',
+            'Size': 'cfm'
+          },
+          'Blower/Ventilation Sizing for Cl2': {
+            'Explosion limit of Cl2 in Air': '%',
+            'Design Safety Factor': '%',
+            'Ventilation Blower/Fan': 'cmh',
+            'Size': 'cfm'
+          }
+        },
+        'EDI_1': {
+          'Electrode Gas Generation': {
+            'H2': 38.647,
+            'C2': '<0.0259',
+            '-': '<0.000111'
+          },
+          'Blower/Ventilation Sizing for H2': {
+            'Explosion limit of H2 in Air': 4,
+            'Design Safety Factor': 100,
+            'Ventilation Blower/Fan': 0.47,
+            'Size': 0.28
+          },
+          'Blower/Ventilation Sizing for Cl2': {
+            'Explosion limit of Cl2 in Air': 0.00005,
+            'Design Safety Factor': 100,
+            'Ventilation Blower/Fan': 25.46,
+            'Size': 14.99
+          }
+        }
+      },
+      'design_summary': {
+        'Category': {
+          '0': 'Input Parameters',
+          '2': 'Feedwater Parameters',
+          '3': 'Calculated Output Parameters'
+        },
+        'Parameter': {
+          'Input Parameters': {
+            'EDI_1': {
+              'Stack Model': 'MK-7',
+              'Target Resistivity': '16 (O.K.)',
+              'Product Flow': '176.4294966785078 (O.K.)',
+              'Flow per stack': '25.000077825328898 (O.K.)',
+              'Target Silica guarantee': '5 (O.K.)',
+              'Rectifier efficiency': '70 (O.K.)',
+              'Rectifier DC output': '400 (O.K.)',
+              'Co-Current Flow': 'No'
+            }
+          },
+          'Feedwater Parameters': {
+            'EDI_1': {
+              'Temperature': '30.0 (O.K.)',
+              'TEA': '2.1234602646748044 (O.K.)',
+              'TEC': '0.6911256331854235 (O.K.)',
+              'pH': '5.473398186084063 (O.K.)',
+              'Alkalinity': '0.16424925292942455 (O.K.)',
+              'Hardness': '0.0 (O.K.)',
+              'Fe++': '0.0 (O.K.)',
+              'Mn++': '0.0 (O.K.)',
+              'B': '0.0 (O.K.)',
+              'Silica': '0.014632306820682279 (O.K.)',
+              'Cond': '2.7 (O.K.)',
+              'Charge Balance': '2.0 (O.K.)'
+            }
+          },
+          'Calculated Output Parameters': {
+            'EDI_1': {
+              'Product Flow Rate': 176.4294966785078,
+              'Product Resistivity': 16,
+              'Product Silica guarantee level': 5,
+              'Predicted Silica product': 0.00021948460231023436,
+              'Predicted Boron product': 'NA',
+              'Product Sodium guarantee level': 1.37471310335234,
+              'Product Chloride guarantee level': 2.12183978995688,
+              'Product Sulfate guarantee level': 2.7431346135543357,
+              'Maximum Allowable Recovery': 95.99540167391497,
+              'Current': 5.078405818024496,
+              'Voltage': 35.50428259820083,
+              'E-Factor': 5.122327976005685,
+              'DC power': 0.180305155311489,
+              'AC power consumption': 0.25757879330212713,
+              'AC energy': 0.024332659054580784,
+              'Feed pressure': 5.436853565596081,
+              'Predicted Product outlet pressure': 3.352399138087014,
+              'Feed Inlet': 183.78952908371377,
+              'Concentrate Outlet': 4.578996495306529,
+              'Electrode Bleed': 2.800012328067487
+            }
+          }
+        },
+        'Units': {
+          'Input Parameters': {
+            'Stack Model': '-',
+            'Target Resistivity': 'MOhm.cm',
+            'Product Flow': 'gpm',
+            'Flow per stack': 'gpm',
+            'Target Silica guarantee': 'ppb SiO2',
+            'Rectifier efficiency': '%',
+            'Rectifier DC output': 'Volts',
+            'Co-Current Flow': 'Yes/No'
+          },
+          'Feedwater Parameters': {
+            'Temperature': '°C',
+            'TEA': 'ppm as CaCO3',
+            'TEC': 'ppm as CaCO3',
+            'pH': '-',
+            'Alkalinity': 'ppm as CaCO3',
+            'Hardness': 'ppm as CaCO3',
+            'Fe++': 'ppm as ion',
+            'Mn++': 'ppm as ion',
+            'B': 'ppm as ion',
+            'Silica': 'ppb SiO2',
+            'Cond': 'µS/cm @ 25°C',
+            'Charge Balance': '-'
+          },
+          'Calculated Output Parameters': {
+            'Product Flow Rate': 'gpm',
+            'Product Resistivity': 'MOhm.cm',
+            'Product Silica guarantee level': 'ppb SiO2',
+            'Predicted Silica product': 'ppb SiO2',
+            'Predicted Boron product': 'ppb B',
+            'Product Sodium guarantee level': 'ppb Na',
+            'Product Chloride guarantee level': 'ppb Cl',
+            'Product Sulfate guarantee level': 'ppb SO4',
+            'Maximum Allowable Recovery': '%',
+            'of E-cell Stacks': '-',
+            'Current': 'Amps',
+            'Voltage': 'Volts',
+            'E-Factor': '-',
+            'DC power': 'kW',
+            'AC power consumption': 'kW',
+            'AC energy': 'kWh/m3',
+            'Feed pressure': 'atm',
+            'Predicted Product outlet pressure': 'atm',
+            'Feed Inlet': 'gpm',
+            'Concentrate Outlet': 'gpm',
+            'Electrode Bleed': 'gpm'
+          }
+        }
+      }
+    },
     'argo_summary': {
       'ROHP_1': {
         'Dosed In': 'ROHP_1',
@@ -8080,7 +8291,156 @@ export const invoiceData = {
         'destination': 'Product_1'
       }
     },
-    'edi_output_dict': {},
+    'edi_output_dict':{
+      'output_user': {
+        'status_check': true,
+        'stack_model': 'E-Cell-3X',
+        'system_param': {
+          'target_resistivity': 16,
+          'target_resistivity_range': '1-16 MOhm.cm',
+          'target_resistivity_status': 'O.K.',
+          'product_flow': 44.34081272476822,
+          'product_flow_range': '>2.3 m3/hr',
+          'product_flow_status': 'O.K.',
+          'flow_per_stack': 3.4070977303070373,
+          'flow_per_stack_range': '2.3 - 6.4 m3/hr',
+          'flow_per_stack_status': 'O.K.',
+          'temperature': 20,
+          'temperature_range': '4.4 - 40 ( °C)',
+          'temperature_status': 'O.K.',
+          'target_silica': 10,
+          'target_silica_range': '5,10,20 or blank',
+          'target_silica_status': 'O.K.',
+          'rect_efficiency': 70,
+          'rect_efficiency_range': '40% - 95%',
+          'rect_efficiency_status': 'O.K.',
+          'rect_dc_output': 400,
+          'rect_dc_output_range': '400 VDC',
+          'rect_dc_output_status': 'O.K.',
+          'feed_pressure': 6.0000000199649985,
+          'feed_pressure_range': '4.1 - 6.9 bar',
+          'feed_pressure_status': 'O.K.'
+        },
+        'feed_param': {
+          'TEA': 9.822940053075564,
+          'TEA_range': '0-31.0',
+          'TEA_status': 'O.K.',
+          'TEC': 1.7976462973178449,
+          'TEC_range': '0-31.0',
+          'TEC_status': 'O.K.',
+          'ph': 5.356698180455068,
+          'ph_range': '4 - 11',
+          'ph_status': 'O.K.',
+          'alkalinity': 0.6229091859038288,
+          'alkalinity_range': '0.0 - 28.8',
+          'alkalinity_status': 'O.K.',
+          'hardness': 0.45,
+          'hardness_range': '0.0 - 1',
+          'hardness_status': 'O.K.',
+          'Fe': 0.00016607550772132024,
+          'Fe_range': '0.0 - 0.01',
+          'Fe_status': 'O.K.',
+          'Mn': 0,
+          'Mn_range': '0.0 - 0.01',
+          'Mn_status': 'O.K.',
+          'Boron': 0,
+          'Boron_range': '0.0 - 0.3',
+          'Boron_status': 'O.K.',
+          'H2S': 0,
+          'H2S_range': '0.0 - 0.01',
+          'H2S_status': 'O.K.',
+          'silica': 46.72371033304048,
+          'silica_range': '0 - 1000',
+          'silica_status': 'O.K.',
+          'conductivity': '5.55',
+          'conductivity_range': '',
+          'conductivity_status': 'O.K.',
+          'charge_bal': 2,
+          'charge_bal_range': '(+/-5%)',
+          'charge_bal_status': 'O.K.'
+        },
+        'feed_water': {
+          'Ca++': 0.16420220099715407,
+          'Mg++': 0.010363761543637981,
+          'Na+': 0.506739067903242,
+          'K+': 0.018001703705686833,
+          'NH4+': 0,
+          'Ba++': 0,
+          'Sr++': 0.000014812065949738746,
+          'Fe++': 0.00016607550772132024,
+          'Mn++': 0,
+          'SO4--': 0.05149779323541054,
+          'Cl-': 0.7941190624206436,
+          'F-': 0.00011858955802393123,
+          'NO3-': 0.0012733857675366596,
+          'Br-': 0,
+          'PO4---': 0.0027253104342521706,
+          'B-': 0,
+          'SiO2': 0.04672371033304048,
+          'H2S': 0,
+          'HCO3-': 0.7596453486631505,
+          'CO2': 5.7634376064949375,
+          'CO3--': 0.000007295677858210721
+        },
+        'calc_param': {
+          'product_flow_rate': 44.34081272476822,
+          'product_resistivity': 16,
+          'product_silica_guarantee_level': 10,
+          'pred_pdt_silica': 1.8063232317273679,
+          'pred_max_pdt_Na': 1.37471310335234,
+          'pred_max_pdt_Cl': 2.12183978995688,
+          'pred_pdt_boron': 'NA',
+          'pred_max_pdt_SO4': 2.7431346135543357,
+          'max_allowable_recovery': 92.32005475612257,
+          'num_stacks': 14,
+          'current': 18.608835463850266,
+          'voltage': 86.03570134744025,
+          'e-factor': 3.666843670138688,
+          'dcpower': 1.6010242103914762,
+          'acpower': 2.2871774434163945,
+          'acenergy': 0.051581834520157376,
+          'feed_pressure': 5.998417936853564,
+          'pred_pdt_outlet_pressure': 4.58262276506311,
+          'feed_inlet': 48.02944803477555,
+          'concentrate_bleed': 2.579999999999998,
+          'electrode_bleed': 1.1129124999999989
+        },
+        'electrode_gas_gen': {
+          'h2_expected': 141.613,
+          'cl2_expected': '<0.094905',
+          'h2_max': 554.008,
+          'cl2_max': 0.37128,
+          'cl2_exp_kg': '<0.000406',
+          'cl2_max_kg': 0.00159,
+          'h2_explosion_limit': 4,
+          'cl2_exposure_limit': 0.00005,
+          'h2_design_sf': 100,
+          'cl2_design_sf': 100,
+          'fan_size_h2_cmh': 0.83,
+          'fan_size_h2_cfm': 0.49,
+          'fan_size_cl2_cmh': 44.55,
+          'fan_size_cl2_cfm': 26.22
+        },
+        'dilution_output': {
+          'current_stack': 1.3,
+          'voltage': 86.03570134744025,
+          'Flow Configuration': 'Counter-Current',
+          'max_all_recovery': 92.32005475612257,
+          'energy_cons': 0.051581834520157376,
+          'feed_flow': 48.02944803477555,
+          'feed_pressure': 5.998417936853564,
+          'prod_flow': 44.34081272476822,
+          'prod_pressure': 4.58262276506311,
+          'conc_bleed_flow': 2.579999999999998,
+          'electrode_bleed_flow': 1.1129124999999989,
+          'max_conc_inlet_press': 4.2379999999999995,
+          'max_conc_outlet_press': 3.547999999999999,
+          'max_electrode_bleed_press': 4.540999999999999
+        },
+        'err_list': []
+      },
+      'unit_type': 'EDI'
+    },
     'project_details': {
       'db_version': 4.08,
       'DateOfChange': '2023-01-20 18:30:00+00:00',
