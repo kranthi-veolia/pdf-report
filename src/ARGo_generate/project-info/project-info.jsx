@@ -82,18 +82,58 @@ const ProjectInfo = ({ info, pageWidth, project, Dosage, plantData }) => {
       </View>
       {/* Container for the main content section */}
       <View style={[project_info.infoTableHeader, { marginTop: RationValHeight(100) }]}>
-        <TableHeader title="Projection Summary" />
-        <View style={{ top: RationValHeight(8), justifyContent: 'space-between', marginLeft: RationValWidth(32) }}>
-          {values.map((item, index) => (
-            <DataRow key={index} label={item.label} value={item.value} />
-          ))}
-        </View>
-        {/* <Text style={[project_info.textHeaderContent, { width: '100%', fontFamily: ArialB600, top: RationValHeight(18) }]}>{}</Text> */}
-        <Text style={{ marginLeft: RationValWidth(8), fontSize: RationValWidth(18), fontFamily: ChineseFonts, top: RationValHeight(18) }}>{notes}</Text>
-        <SubLine lineWidth='100%' lineHeight='24' color='#B3D3D7' />
-        <TableHeader title="Project Data Summary" />
-        <View style={{ marginLeft: RationValWidth(2), paddingRight: '10px', paddingBottom: '10px', flexDirection: 'row' }}>
-          <DisplayPlantData plantData={plantData} />
+        <View style={{ height: '100%' }}>
+          {tableHeader('Projection Summary')}
+          <View style={{ top: RationValHeight(8), flexDirection: 'row', justifyContent: 'space-between' }}>
+            <View style={{ width: '100%', marginLeft: RationValWidth(32) }}>
+              {val.map((ele, ind) => {
+                return (
+                  <View key={ind} style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                    {
+                      Object.keys(ele).map((data, i) => {
+                        return (
+                          <React.Fragment key={i}>
+                            <Text style={[project_info.textContent, { width: '25%' }]}>•  {data}</Text>
+                            <Text style={{ width: '75%', fontSize: RationValWidth(18), fontFamily: ChineseFonts }}>{ele[data] || '-'}</Text>
+                          </React.Fragment>
+                        );
+                      })
+                    }
+                  </View>
+                );
+              })}
+            </View>
+          </View>
+          {/* </View> */}
+          {/* Notes Starts */}
+          {/* <View> */}
+          <Text style={[project_info.textHeaderContent, { width: '100%', fontFamily: ArialB600, top: RationValHeight(18)}]}>•  Notes</Text>
+          <View style={{ marginLeft: RationValWidth(8) }}>
+            {val1.map((ele, ind) => {
+              return (
+                <View key={ind} style={{ flexDirection: 'row' }}>
+                  {Object.keys(ele).map((data, i) => {
+                    return (
+                      <React.Fragment key={i}>
+                        <Text style={{ width: '100%', fontSize: RationValWidth(18), fontFamily: ChineseFonts }}>{printData(ele[data])}</Text>
+                      </React.Fragment>
+                    );
+                  })}
+                </View>
+              );
+            })}
+          </View>
+          <SubLine lineWidth='100%' lineHeight='24' color='#B3D3D7' />
+          {tableHeader('Project Data Summary')}
+          {/* Winflows 5 Program details and Report Details Start */}
+          <View style={{ marginLeft: RationValWidth(2), paddingRight: '10px', paddingBottom:'10px', flexDirection: 'row'}}>
+            <View style={{width: RationValWidth(520)}}>
+              <DisplayPlantData plantData={plantData} />
+            </View>
+            {/* <View style={{width: RationValWidth(520)}}>
+              <DisplayPlantData plantData={plantData} />
+            </View> */}
+          </View>
         </View>
       </View>
     </View>

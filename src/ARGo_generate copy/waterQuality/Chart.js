@@ -1,7 +1,6 @@
-/* eslint-disable no-console */
 import React from 'react';
 
-import {htmlSvgToPdfSvg} from './imageFromSvg';
+import { htmlSvgToPdfSvg } from './imageFromSvg';
 
 const chartToPdfSvg = (children, width, height, debug, style) => {
   const component = htmlSvgToPdfSvg(children);
